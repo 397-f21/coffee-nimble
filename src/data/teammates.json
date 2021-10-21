@@ -1,0 +1,62 @@
+{
+    "Jake" : {
+        "pastParters" : {
+            "Carina" : 0,
+            "Iris" : 0,
+            "Yijing" : 0,
+            "Daniel" : 0,
+            "Misha" : 0
+        },
+        "difficultyPoints" : 0
+    },
+    "Carina" : {
+        "pastParters" : {
+            "Jake" : 0,
+            "Iris" : 0,
+            "Yijing" : 0,
+            "Daniel" : 0,
+            "Misha" : 0
+        },
+        "difficultyPoints" : 0
+    },
+    "Iris" : {
+        "pastParters" : {
+            "Carina" : 0,
+            "Jake" : 0,
+            "Yijing" : 0,
+            "Daniel" : 0,
+            "Misha" : 0
+        },
+        "difficultyPoints" : 0
+    },
+    "Yijing" : {
+        "pastParters" : {
+            "Carina" : 0,
+            "Iris" : 0,
+            "Jake" : 0,
+            "Daniel" : 0,
+            "Misha" : 0
+        },
+        "difficultyPoints" : 0
+    },
+    "Daniel" : {
+        "pastParters" : {
+            "Carina" : 0,
+            "Iris" : 0,
+            "Yijing" : 0,
+            "Jake" : 0,
+            "Misha" : 0
+        },
+        "difficultyPoints" : 0
+    },
+    "Misha" : {
+        "pastParters" : {
+            "Carina" : 0,
+            "Iris" : 0,
+            "Yijing" : 0,
+            "Daniel" : 0,
+            "Jake" : 0
+        },
+        "difficultyPoints" : 0
+    }
+}
