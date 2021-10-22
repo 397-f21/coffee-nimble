@@ -13,7 +13,7 @@ const task = () => {
     difficulty: 3,
     assignees: ["Jake", "Misha"],
     priority: 5,
-    completed: false,
+    completed: true,
   };
 };
 
@@ -30,8 +30,8 @@ export default function TaskCard() {
               <li class="assignees">{listitem}</li>
             ))}
           </Typography>
-          {/* <Checkbox checked={task().completed} onChange={handleChange} /> */}
-          <ControlledCheckbox></ControlledCheckbox>
+          {/* <Checkbox checked={task().completed} /> */}
+          <ControlledCheckbox isChecked={task().completed}></ControlledCheckbox>
         </CardContent>
         <CardActions></CardActions>
       </Card>
