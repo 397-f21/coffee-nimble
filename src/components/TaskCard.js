@@ -4,6 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
+import ControlledCheckbox from "./ControlledCheckBox";
 import "../styles.css";
 
 const task = () => {
@@ -24,10 +25,13 @@ export default function TaskCard() {
           <Typography variant="h5" component="div">
             {task().description}
           </Typography>
-          <Typography class="assignees" variant="subtitle1" component="div">
-            {task().assignees.join("\n")}
+          <Typography variant="subtitle1" component="div">
+            {task().assignees.map((listitem) => (
+              <li class="assignees">{listitem}</li>
+            ))}
           </Typography>
-          <Checkbox />
+          {/* <Checkbox checked={task().completed} onChange={handleChange} /> */}
+          <ControlledCheckbox></ControlledCheckbox>
         </CardContent>
         <CardActions></CardActions>
       </Card>
