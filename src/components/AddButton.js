@@ -104,7 +104,7 @@ export default function AddButton() {
   };
 
   return (
-    <div>
+    <div id="addButton">
       <Button variant="outlined" onClick={handleAddOpen}>
         Add new task
       </Button>
@@ -116,7 +116,7 @@ export default function AddButton() {
               autoFocus
               value={newTask.description}
               onChange={handleDescriptionChange}
-              label="description"
+              label="Short description of task"
               type="text"
               variant="standard"
             />
