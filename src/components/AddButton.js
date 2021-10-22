@@ -5,6 +5,10 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const taskList = [
   {
@@ -44,16 +48,21 @@ const taskList = [
   },
 ];
 
-export default function AddButton() {
-  const [newTask, setNewTask] = useState({
+const blankForm = () => {
+  return {
     description: "",
-    difficulty: 0,
+    difficulty: 1,
     assignees: [],
-    priority: 0,
+    priority: 1,
     completed: false,
-  });
+  }
+}
+
+export default function AddButton() {
+  
   const [tasks, setTasks] = useState(taskList);
   const [open, setOpen] = React.useState(false);
+  const [newTask, setNewTask] = useState(blankForm());
 
   const handleAddOpen = ( ) => {
     setOpen(true);
@@ -62,6 +71,7 @@ export default function AddButton() {
 
   const handleClose = () => {
     setOpen(false);
+    setNewTask(blankForm());
   };
 
   const handleDescriptionChange = (event) => {
@@ -71,15 +81,23 @@ export default function AddButton() {
       ["description"]: newDescription,
     }));
   };
-/*
-  const handleDiffcultyChange = (event) => {
-    const newDiffcuties = event.target.value;
-    setNewDiffcuties((prevState) => ({
+
+  const handleDifficultyChange = (event) => {
+    const newDifficulty = event.target.value;
+    setNewTask((prevState) => ({
       ...prevState,
       ["difficulty"]: newDifficulty,
     }));
   };
-*/
+
+  const handlePriorityChange = (event) => {
+    const newPriority = event.target.value;
+    setNewTask((prevState) => ({
+      ...prevState,
+      ["priority"]: newPriority,
+    }));
+  };
+
   const addTask = () => {
     setTasks((prevState) => [...prevState, newTask]);
     handleClose();
@@ -93,15 +111,44 @@ export default function AddButton() {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Enter New Task Information</DialogTitle>
         <DialogContent>
-          <div className="addEditModal">
+          <div id="newTaskForm">
             <TextField
               autoFocus
-              //id="name"
+              value={newTask.description}
               onChange={handleDescriptionChange}
               label="description"
               type="text"
               variant="standard"
             />
+            <div id="selects">
+              <FormControl fullWidth>
+                <InputLabel>Difficulty</InputLabel>
+                <Select
+                  value={newTask.difficulty}
+                  label="Difficulty"
+                  onChange={handleDifficultyChange}
+                >
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl fullWidth>
+
+                <InputLabel>Priority</InputLabel>
+                <Select
+                  value={newTask.priority}
+                  label="Priority (5 = high, 1 = low)"
+                  onChange={handlePriorityChange}
+                >
+                  <MenuItem value={1}>1</MenuItem>
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
           </div>
         </DialogContent>
         <DialogActions>

@@ -2,7 +2,19 @@
   text-align: center;
 }
 
-.App-logo {
+#newTaskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#selects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +47,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
