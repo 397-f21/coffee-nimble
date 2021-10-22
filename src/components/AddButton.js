@@ -57,22 +57,73 @@ const taskList = [
 
 
 export default function AddButton() {
+    const [newTask, setNewTask] = useState( {
+        "description": "",
+        "difficulty": 0 ,
+        "assignees": [
+            
+        ],
+        "priority": 0,
+        "completed": false
+    });
     const [tasks, setTasks] = useState(taskList);
-    const [addOpen, setAddOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
 
     const handleAddOpen = (event) => {
-        setAddOpen(true);
+        setOpen(true);
         console.log(tasks);
     };
 
-    const handleAddClose = () => {
-        setAddOpen(false);
+    const handleClose = () => {
+        setOpen(false);
     };
 
+    const handleDescriptionChange = (event) => {
+        const newDescription = event.target.value;
+        setNewTask(prevState => ({
+          ...prevState,
+          ['description']: newDescription
+        }));
+      };
+    
+      const addTask = () => {
+        
+        props.setTasks(prevState => ([
+          ...prevState,
+           newTask
+        ]));
+        props.handleClose();
+      };
+
     return(
-        <Button variant="outlined" onClick={handleAddOpen}>
-        Add new task
-      </Button>
+        
+      <div>
+          <Button variant="outlined" onClick={handleAddOpen}>
+            Add new task
+          </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+      >
+        <DialogTitle>Enter New Task Information</DialogTitle>
+        <DialogContent>
+          <div className="addEditModal">
+            <TextField
+              autoFocus
+              //id="name"
+              onChange={handleDescriptionChange}
+              label="description"
+              type="text"
+              variant="standard"
+              />
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={addTask}>Add</Button>
+        </DialogActions>
+      </Dialog>
+      </div>
     )
     
 }
