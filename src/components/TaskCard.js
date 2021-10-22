@@ -24,7 +24,7 @@ export default function TaskCard() {
           <Typography variant="h5" component="div">
             {task().description}
           </Typography>
-          <Typography variant="subtitle1" component="div">
+          <Typography class="assignees" variant="subtitle1" component="div">
             {task().assignees.join("\n")}
           </Typography>
           <Checkbox />

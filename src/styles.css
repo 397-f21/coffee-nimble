@@ -5,3 +5,9 @@
   align-items: center;
   width: 400px;
 }
+
+.assignees {
+  background-color: red;
+  border-radius: 25px;
+  padding: 5px;
+}
