@@ -3,6 +3,8 @@ import './App.css';
 import AddButton from './components/AddButton';
 import TaskCard from "./components/TaskCard";
 import AssignButton from './components/assignButton';
+import React, { useState} from 'react';
+
 
 let taskList = [
   {
@@ -79,15 +81,25 @@ let mems = [
 ]
 
 function App() {
+  const [tasks, setTasks] = useState(taskList);
+
+
   return (
     <div className="App">
       <header className="App-header">
       </header>
       <div className="body">
-        <AddButton/>
         <AssignButton members={mems} tasks={taskList}/>
+        <AddButton
+          setTasks={setTasks}
+        />
       </div>
-      <TaskCard></TaskCard>
+      {Object.values(tasks).map((task) => ( 
+      <TaskCard
+        task={task}
+      />
+      ))
+      }
     </div>
   );
 }

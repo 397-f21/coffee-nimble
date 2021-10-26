@@ -10,43 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const taskList = [
-  {
-    description: "create task component",
-    difficulty: 3,
-    assignees: ["Jake", "Misha"],
-    priority: 5,
-    completed: false,
-  },
-  {
-    description: "Assign tasks button",
-    difficulty: 3,
-    assignees: ["Iris", "Carina"],
-    priority: 5,
-    completed: false,
-  },
-  {
-    description: "Task List",
-    difficulty: 3,
-    assignees: ["Daniel", "Yijing"],
-    priority: 3,
-    completed: false,
-  },
-  {
-    description: "login",
-    difficulty: 3,
-    assignees: ["Jake", "Carina"],
-    priority: 2,
-    completed: false,
-  },
-  {
-    description: "mood tracking",
-    difficulty: 3,
-    assignees: ["Misha", "Daniel", "Iris"],
-    priority: 1,
-    completed: false,
-  },
-];
 
 const blankForm = () => {
   return {
@@ -58,15 +21,15 @@ const blankForm = () => {
   }
 }
 
-export default function AddButton() {
+export default function AddButton({setTasks}) {
   
-  const [tasks, setTasks] = useState(taskList);
+  //const [tasks, setTasks] = useState(taskList);
   const [open, setOpen] = React.useState(false);
   const [newTask, setNewTask] = useState(blankForm());
 
   const handleAddOpen = ( ) => {
     setOpen(true);
-    console.log(tasks);
+    //console.log(tasks);
   };
 
   const handleClose = () => {
