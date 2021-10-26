@@ -1,4 +1,4 @@
- let mems = [
+let mems = [
     {
         "name": "Jake",
         "score": 0
@@ -30,69 +30,55 @@ let tasks = [
     {
         "description": "create task component",
         "difficulty": 3,
-        "assignees": [
-            "Jake",
-            "Misha"
-        ],
+        "assignees": [],
         "priority": 5,
         "completed": false
     },
     {
         "description": "Assign tasks button",
         "difficulty": 3,
-        "assignees": [
-            "Iris",
-            "Carina"
-        ],
+        "assignees": [],
         "priority": 5,
         "completed": false
     },
     {
         "description": "Task List",
         "difficulty": 3,
-        "assignees": [
-            "Daniel",
-            "Yijing"
-        ],
+        "assignees": [],
         "priority": 3,
         "completed": false
     },
     {
         "description": "login",
         "difficulty": 3,
-        "assignees": [
-            "Jake",
-            "Carina"
-        ],
+        "assignees": [],
         "priority": 2,
         "completed": false
     },
     {
         "description": "mood tracking",
         "difficulty": 3,
-        "assignees": [
-            "Misha",
-            "Daniel",
-            "Iris"
-        ],
+        "assignees": [],
         "priority": 1,
         "completed": false
     },
 ]
 
-export function assignTasks(members, tasks){
-    let newTasks = tasks.filter(task => task.assignees.length === 0).sort((a, b) => a.difficulty > b.difficulty)
-
-    newTasks.map(task => {
+const assignTasks = (members, tasks) => {
+    let newTasks = tasks.filter(task => task.assignees.length === 0).sort((a, b) => a.difficulty > b.difficulty);
+    newTasks.forEach(task => {
         members.sort((a, b) => a.score > b.score)
 
-        members.map((mem, index) => {
+        members.forEach((mem, index) => {
             if(index < task.difficulty){
                 task.assignees.push(mem)
-                mem.score += task.difficulty
+                members[index].score += task.difficulty
             }
         })
         
     })
-    return [tasks.filter(task => task.assignees.length > 0), ...newTasks]
+    console.log(JSON.stringify({tasks: [tasks.filter(task => task.assignees.length > 0), ...newTasks], mems: members}));
+    return {tasks: [tasks.filter(task => task.assignees.length > 0), ...newTasks], mems: members}
 }
+
+export default assignTasks;
