@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import AddButton from './components/AddButton';
+import TaskCard from "./components/TaskCard";
+
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <div className="body">
         <AddButton/>
       </div>
+      <TaskCard></TaskCard>
     </div>
   );
 }
