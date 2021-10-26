@@ -96,5 +96,3 @@ export function assignTasks(members, tasks){
     })
     return [tasks.filter(task => task.assignees.length > 0), ...newTasks]
 }
-
-assignTasks(mems, tasks)
