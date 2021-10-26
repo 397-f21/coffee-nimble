@@ -17,21 +17,21 @@ const task = () => {
   };
 };
 
-export default function TaskCard() {
+export default function TaskCard({task}) {
   return (
     <div>
       <Card className="card" sx={{ minWidth: 275 }}>
         <CardContent className="cardContent">
-          <Typography variant="h5" component="div">
-            {task().description}
+          <Typography className="cardDescription" variant="h5" component="div">
+            {task.description}
           </Typography>
           <Typography variant="subtitle1" component="div">
-            {task().assignees.map((listitem) => (
+            {task.assignees.map((listitem) => (
               <li class="assignees">{listitem}</li>
             ))}
           </Typography>
           {/* <Checkbox checked={task().completed} /> */}
-          <ControlledCheckbox isChecked={task().completed}></ControlledCheckbox>
+          <ControlledCheckbox isChecked={task.completed}></ControlledCheckbox>
         </CardContent>
         <CardActions></CardActions>
       </Card>
