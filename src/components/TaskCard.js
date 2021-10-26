@@ -18,6 +18,9 @@ const task = () => {
 };
 
 export default function TaskCard({task}) {
+    console.log("=====================")
+    console.log(task)
+    console.log("=====================")
   return (
     <div>
       <Card className="card" sx={{ minWidth: 275 }}>
@@ -27,7 +30,7 @@ export default function TaskCard({task}) {
           </Typography>
           <Typography variant="subtitle1" component="div">
             {task.assignees.map((listitem) => (
-              <li class="assignees">{listitem}</li>
+              <li class="assignees">{listitem.name}</li>
             ))}
           </Typography>
           {/* <Checkbox checked={task().completed} /> */}

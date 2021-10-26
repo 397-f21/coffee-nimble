@@ -9,7 +9,7 @@ import React, { useState} from 'react';
 let taskList = [
   {
       "description": "create task component",
-      "difficulty": 3,
+      "difficulty": 1,
       "assignees": [
       ],
       "priority": 5,
@@ -17,7 +17,7 @@ let taskList = [
   },
   {
       "description": "Assign tasks button",
-      "difficulty": 3,
+      "difficulty": 2,
       "assignees": [
       ],
       "priority": 5,
@@ -43,7 +43,7 @@ let taskList = [
   },
   {
       "description": "mood tracking",
-      "difficulty": 3,
+      "difficulty": 1,
       "assignees": [
 
       ],
@@ -82,18 +82,19 @@ let mems = [
 
 function App() {
   const [tasks, setTasks] = useState(taskList);
-
+  const [members, setMems] = useState(mems);
 
   return (
     <div className="App">
       <header className="App-header">
       </header>
       <div className="body">
-        <AssignButton members={mems} tasks={taskList}/>
+        <AssignButton members={members} tasks={tasks} setTasks={setTasks} setMems={setMems}/>
         <AddButton
           setTasks={setTasks}
         />
       </div>
+      {console.log(tasks)}
       {Object.values(tasks).map((task) => ( 
       <TaskCard
         task={task}

@@ -67,9 +67,7 @@ let tasks = [
 const assignTasks = (members, tasks) => {
     let newTasks = tasks.filter(task => task.assignees.length === 0).sort((a, b) => a.difficulty > b.difficulty);
     newTasks.forEach(task => {
-        members.sort((a, b) => a.score > b.score)
-
-        members.forEach((mem, index) => {
+        members.sort((a, b) => a.score > b.score).forEach((mem, index) => {
             if(index < task.difficulty){
                 task.assignees.push(mem)
                 members[index].score += task.difficulty
@@ -78,7 +76,7 @@ const assignTasks = (members, tasks) => {
         
     })
     console.log(JSON.stringify({tasks: [tasks.filter(task => task.assignees.length > 0), ...newTasks], mems: members}));
-    return {tasks: [tasks.filter(task => task.assignees.length > 0), ...newTasks], mems: members}
+    return {tasks: [...tasks.filter(task => task.assignees.length > 0), ...newTasks], mems: members}
 }
 
 export default assignTasks;
