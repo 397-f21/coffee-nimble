@@ -22,7 +22,7 @@ export default function TaskCard({task}) {
     <div>
       <Card className="card" sx={{ minWidth: 275 }}>
         <CardContent className="cardContent">
-          <Typography variant="h5" component="div">
+          <Typography className="cardDescription" variant="h5" component="div">
             {task.description}
           </Typography>
           <Typography variant="subtitle1" component="div">

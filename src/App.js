@@ -58,9 +58,9 @@ function App() {
         />
       </div>
       {Object.values(tasks).map((task) => ( 
-      <TaskCard>
+      <TaskCard
         task={task}
-      </TaskCard>
+      />
       ))
       }
     </div>
