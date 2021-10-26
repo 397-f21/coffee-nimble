@@ -3,21 +3,12 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Checkbox from "@mui/material/Checkbox";
 import ControlledCheckbox from "./ControlledCheckBox";
 import "../styles.css";
+import $ from "jquery";
+window.$ = $;
 
-const task = () => {
-  return {
-    description: "create task component",
-    difficulty: 3,
-    assignees: ["Jake", "Misha"],
-    priority: 5,
-    completed: true,
-  };
-};
-
-export default function TaskCard({task}) {
+export default function TaskCard({ task }) {
   return (
     <div>
       <Card className="card" sx={{ minWidth: 275 }}>
@@ -27,7 +18,7 @@ export default function TaskCard({task}) {
           </Typography>
           <Typography variant="subtitle1" component="div">
             {task.assignees.map((listitem) => (
-              <li class="assignees">{listitem}</li>
+              <li class={listitem}>{listitem}</li>
             ))}
           </Typography>
           {/* <Checkbox checked={task().completed} /> */}
