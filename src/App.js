@@ -83,7 +83,7 @@ let mems = [
 function App() {
   const [tasks, setTasks] = useState(taskList);
   const [members, setMems] = useState(mems);
-
+  console.log(members)
   return (
     <div className="App">
       <header className="App-header">

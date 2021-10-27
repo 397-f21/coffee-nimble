@@ -52,8 +52,9 @@ import assignTasks from '../Utilities/assign';
 
 
 export default function AssignButton({members,tasks, setTasks, setMems}) {
-  console.log(members)
+  
   const handleClick = () => {
+    console.log(members)
     let taskAndMems = assignTasks(members,tasks)
     setTasks(taskAndMems.tasks)
     setMems(taskAndMems.mems)

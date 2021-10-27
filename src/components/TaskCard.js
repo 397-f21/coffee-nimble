@@ -18,9 +18,6 @@ const task = () => {
 };
 
 export default function TaskCard({task}) {
-    console.log("=====================")
-    console.log(task)
-    console.log("=====================")
   return (
     <div>
       <Card className="card" sx={{ minWidth: 275 }}>
