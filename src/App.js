@@ -5,7 +5,6 @@ import AssignButton from './components/assignButton';
 import Typography from "@mui/material/Typography";
 import React, { useState} from 'react';
 
-
 let taskList = [
   {
       "description": "create task component",
@@ -16,7 +15,7 @@ let taskList = [
       "completed": false
   },
   {
-      "description": "Assign tasks button",
+      "description": "assign tasks button",
       "difficulty": 3,
       "assignees": [
       ],
@@ -24,10 +23,9 @@ let taskList = [
       "completed": false
   },
   {
-      "description": "Task List",
+      "description": "task List",
       "difficulty": 3,
       "assignees": [
-
       ],
       "priority": 3,
       "completed": false
@@ -87,8 +85,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Typography variant="h5">
-          Team Coffee Taskboard
+        <Typography className="title" variant="h2">
+          nimble
+        </Typography>
+        <Typography className="title" variant="h5">
+          tasks for team coffee
         </Typography>
       </header>
       <div className="body">
