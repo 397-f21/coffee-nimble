@@ -4,16 +4,16 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import ControlledCheckbox from "./ControlledCheckBox";
-import "../styles.css";
-import $ from "jquery";
-window.$ = $;
+import "../App.css";
+// import $ from "jquery";
+// window.$ = $;
 
 export default function TaskCard({ task }) {
   return (
     <div>
-      <Card className="card" sx={{ minWidth: 275 }}>
+      <Card className="card" sx={{ minWidth: 330 }}>
         <CardContent className="cardContent">
-          <Typography className="cardDescription" variant="h5" component="div">
+          <Typography className="cardDescription" variant="h6">
             {task.description}
           </Typography>
           <Typography variant="subtitle1" component="div">

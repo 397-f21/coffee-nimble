@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import AddButton from './components/AddButton';
 import TaskCard from "./components/TaskCard";
 import AssignButton from './components/assignButton';
+import Typography from "@mui/material/Typography";
 import React, { useState} from 'react';
 
 
@@ -45,7 +45,7 @@ let taskList = [
       "description": "mood tracking",
       "difficulty": 3,
       "assignees": [
-
+        
       ],
       "priority": 1,
       "completed": false
@@ -87,19 +87,27 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Typography variant="h5">
+          Team Coffee Taskboard
+        </Typography>
       </header>
       <div className="body">
-        <AssignButton members={mems} tasks={taskList}/>
-        <AddButton
-          setTasks={setTasks}
-        />
+        <div className="button-group">
+          <AssignButton members={mems} tasks={taskList}/>
+          <AddButton
+            setTasks={setTasks}
+          />
+        </div>
+        <div className="task-list">
+          {Object.values(tasks).map((task) => ( 
+            <TaskCard
+              task={task}
+              key={task.description}
+            />
+            ))
+          }
+        </div>
       </div>
-      {Object.values(tasks).map((task) => ( 
-      <TaskCard
-        task={task}
-      />
-      ))
-      }
     </div>
   );
 }
