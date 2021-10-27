@@ -45,7 +45,7 @@ let taskList = [
       "description": "mood tracking",
       "difficulty": 3,
       "assignees": [
-        
+
       ],
       "priority": 1,
       "completed": false
@@ -99,7 +99,7 @@ function App() {
           />
         </div>
         <div className="task-list">
-          {Object.values(tasks).map((task) => ( 
+          {tasks.map((task) => ( 
             <TaskCard
               task={task}
               key={task.description}
