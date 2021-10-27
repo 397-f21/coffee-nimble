@@ -8,15 +8,15 @@ import React, { useState} from 'react';
 let taskList = [
   {
       "description": "create task component",
-      "difficulty": 3,
+      "difficulty": 1,
       "assignees": [
       ],
       "priority": 5,
       "completed": false
   },
   {
-      "description": "assign tasks button",
-      "difficulty": 3,
+      "description": "Assign tasks button",
+      "difficulty": 2,
       "assignees": [
       ],
       "priority": 5,
@@ -41,7 +41,7 @@ let taskList = [
   },
   {
       "description": "mood tracking",
-      "difficulty": 3,
+      "difficulty": 1,
       "assignees": [
 
       ],
@@ -80,8 +80,8 @@ let mems = [
 
 function App() {
   const [tasks, setTasks] = useState(taskList);
-
-
+  const [members, setMems] = useState(mems);
+  console.log(members)
   return (
     <div className="App">
       <header className="App-header">
@@ -94,7 +94,7 @@ function App() {
       </header>
       <div className="body">
         <div className="button-group">
-          <AssignButton members={mems} tasks={taskList}/>
+          <AssignButton members={members} tasks={tasks} setTasks={setTasks} setMems={setMems}/>
           <AddButton
             setTasks={setTasks}
           />
