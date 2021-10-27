@@ -68,7 +68,10 @@ export default function AddButton({setTasks}) {
 
   return (
     <div id="addButton">
-      <Button variant="outlined" onClick={handleAddOpen}>
+      <Button 
+        variant="outlined" 
+        color="secondary"
+        onClick={handleAddOpen}>
         Add new task
       </Button>
       <Dialog open={open} onClose={handleClose}>
