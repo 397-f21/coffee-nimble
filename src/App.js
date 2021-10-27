@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import AddButton from './components/AddButton';
 import TaskCard from "./components/TaskCard";
 import AssignButton from './components/assignButton';
+import Typography from "@mui/material/Typography";
 import React, { useState} from 'react';
-
 
 let taskList = [
   {
@@ -24,10 +23,9 @@ let taskList = [
       "completed": false
   },
   {
-      "description": "Task List",
+      "description": "task List",
       "difficulty": 3,
       "assignees": [
-
       ],
       "priority": 3,
       "completed": false
@@ -87,20 +85,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Typography className="title" variant="h2">
+          nimble
+        </Typography>
+        <Typography className="title" variant="h5">
+          tasks for team coffee
+        </Typography>
       </header>
       <div className="body">
-        <AssignButton members={members} tasks={tasks} setTasks={setTasks} setMems={setMems}/>
-        <AddButton
-          setTasks={setTasks}
-        />
+        <div className="button-group">
+          <AssignButton members={members} tasks={tasks} setTasks={setTasks} setMems={setMems}/>
+          <AddButton
+            setTasks={setTasks}
+          />
+        </div>
+        <div className="task-list">
+          {tasks.map((task) => ( 
+            <TaskCard
+              task={task}
+              key={task.description}
+            />
+            ))
+          }
+        </div>
       </div>
-      {console.log(tasks)}
-      {Object.values(tasks).map((task) => ( 
-      <TaskCard
-        task={task}
-      />
-      ))
-      }
     </div>
   );
 }

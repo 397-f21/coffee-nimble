@@ -1,8 +1,35 @@
-.body {
+.App {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-group {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-bottom: 20px;
+}
+
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 #newTaskForm {
@@ -17,37 +44,56 @@
   justify-content: space-between;
   gap: 20px;
 }
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+.cardDescription {
+  width: 50%;
+  overflow-wrap: break-word;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  border-radius: 25px;
+  padding: 4px;
+  margin: 2px;
+}
+
+.Yijing {
+  background: rgb(0, 183, 255);
+}
+
+.Misha {
+  background: rgb(0, 255, 157);
+}
+
+.Daniel {
+  background: rgb(188, 124, 207);
+}
+
+.Jake {
+  background: rgb(245, 238, 139);
+}
+
+.Iris {
+  background: rgb(245, 139, 139);
+}
+
+.Carina {
+  background: rgb(76, 127, 238);
+}
+
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 } */
+
