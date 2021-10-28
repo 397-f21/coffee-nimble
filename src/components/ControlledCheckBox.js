@@ -10,6 +10,7 @@ export default function ControlledCheckbox({ isChecked }) {
 
   return (
     <Checkbox
+      data-testid= "checkbox"
       checked={checked}
       onChange={handleChange}
       inputProps={{ "aria-label": "controlled" }}
