@@ -41,14 +41,11 @@ describe("TaskCard Component", () => {
 
 
     it("checkbox checked prop changed", () =>{
-        act(async () => {
-            const {getByTestId} = render(<TaskCard task={task1}/>);
-            const checkbox = getByTestId("checkbox").querySelector('input[type="checkbox"]');
-            expect(checkbox).toHaveProperty('checked', false);
-            fireEvent.click(checkbox);
-            expect(checkbox).toHaveProperty('checked', true);
-            
-        })
+        const {getByTestId} = render(<TaskCard task={task1}/>);
+        const checkbox = getByTestId("checkbox").querySelector('input[type="checkbox"]');
+        expect(checkbox).toHaveProperty('checked', false);
+        fireEvent.click(checkbox);
+        expect(checkbox).toHaveProperty('checked', true);
     })
 
 })
