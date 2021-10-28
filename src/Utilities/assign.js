@@ -69,12 +69,16 @@ const assignTasks = (members, tasks) => {
     priorityQueue.init(members);
     let filteredTasks = tasks.filter(task => task.assignees.length === 0).sort((a, b) => a.difficulty > b.difficulty);
     let newTasks = JSON.parse(JSON.stringify(filteredTasks));
+    let tmpMembers = [];
     newTasks.forEach(task => {
        for (let i = 0; i < task.difficulty; i++){
         let curMember = priorityQueue.pop();
         curMember.score += task.difficulty;
-        priorityQueue.push(curMember);
+        tmpMembers.push(curMember);
         task.assignees.push(curMember);
+       }
+       for (let member of tmpMembers){
+        priorityQueue.push(member);
        }
     });
     let updatedMembers = [];
