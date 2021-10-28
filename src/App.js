@@ -83,9 +83,6 @@ function App() {
   const [members, setMems] = useState(mems);
   console.log(members)
 
-  const isUnassigned = (task) => task.assignees.length === 0;
-  const unassignedTasks = tasks.some(isUnassigned)
-
   return (
     <div className="App">
       <header className="App-header">
@@ -96,10 +93,15 @@ function App() {
           tasks for team coffee
         </Typography>
       </header>
-      <div className="body">
+      <div>
         <div className="button-group">
-          <AddButton setTasks={setTasks}/>
-          <AssignButton members={members} tasks={tasks} setTasks={setTasks} setMems={setMems} variant={unassignedTasks ? "contained" : "outlined"}/>
+          <AddButton 
+            setTasks={setTasks}/>
+          <AssignButton 
+            members={members} 
+            tasks={tasks} 
+            setTasks={setTasks} 
+            setMems={setMems} />
         </div>
         <div className="task-list">
           {tasks.map((task) => ( 

@@ -17,6 +17,14 @@ export default function TaskCard({ task }) {
           <Typography className="cardDescription" variant="h6">
             {task.description}
           </Typography>
+          <div className="priority">
+            <Typography variant="overline" sx={{fontSize: 6 }}>
+              PRIORITY
+            </Typography>
+            <Typography variant="button">
+              {task.priority}
+            </Typography>
+          </div>
           <Typography variant="subtitle1" component="div" sx={{ width: 75 }}>
             {task.assignees.map((listitem) => (
               <li className={listitem.name} key={listitem.name}>{listitem.name}</li>

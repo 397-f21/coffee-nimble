@@ -9,6 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import FormHelperText from '@mui/material/FormHelperText';
 
 
 const blankForm = () => {
@@ -62,7 +63,7 @@ export default function AddButton({setTasks}) {
   };
 
   const addTask = () => {
-    setTasks((prevState) => [...prevState, newTask]);
+    setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
     handleClose();
   };
 
@@ -85,34 +86,38 @@ export default function AddButton({setTasks}) {
               label="Short description of task"
               type="text"
               variant="standard"
-            />
+              />
             <div id="selects">
               <FormControl fullWidth>
                 <InputLabel>Difficulty</InputLabel>
                 <Select
                   value={newTask.difficulty}
                   label="Difficulty"
+                  helperText="1 = easy, 3 = hard"
                   onChange={handleDifficultyChange}
-                >
+                  >
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
                 </Select>
+                <FormHelperText>1=simple, 3=complex</FormHelperText>
               </FormControl>
               <FormControl fullWidth>
 
                 <InputLabel>Priority</InputLabel>
                 <Select
                   value={newTask.priority}
-                  label="Priority (5 = high, 1 = low)"
+                  label="Priority"
+                  helperText="1 = high, 5 = low"
                   onChange={handlePriorityChange}
-                >
+                  >
                   <MenuItem value={1}>1</MenuItem>
                   <MenuItem value={2}>2</MenuItem>
                   <MenuItem value={3}>3</MenuItem>
                   <MenuItem value={4}>4</MenuItem>
                   <MenuItem value={5}>5</MenuItem>
                 </Select>
+                <FormHelperText>1=trivial, 5=urgent</FormHelperText>
               </FormControl>
             </div>
           </div>

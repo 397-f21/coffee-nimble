@@ -15,14 +15,21 @@
 }
 
 .button-group {
-  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 20px;
+  gap: 10px;
+
 }
 
+.priority {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 .task-list {
   display: flex;
@@ -53,7 +60,7 @@
 }
 
 .cardDescription {
-  width: 50%;
+  width: 40%;
   overflow-wrap: break-word;
 }
 
