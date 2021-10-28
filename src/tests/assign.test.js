@@ -45,7 +45,9 @@ expect(assignTasks(mems, tasks)).toEqual(functionResult)
 
 });
 
-test('Tasklist shows assigned members correctly after initial assignment', () => {
+// correctly: it assigns correct number of points 
+// to the members and assign correct number of people to each task based on its difficulty
+test('Initial assignement of tasks works correctly', () => {
     let tasks = [
         {
             "description": "create task component",
