@@ -1,0 +1,32 @@
+
+{    
+    "members": [
+        {
+            "name": "Jake",
+            "score": 0
+        }, 
+        {
+            "name": "Misha",
+            "score": 0
+        }, 
+      
+        {
+            "name": "Carina",
+            "score": 0
+        },
+        {
+            "name": "Iris",
+            "score": 0
+        }, 
+        {
+            "name": "Daniel",
+            "score": 0
+        }, 
+        {
+            "name": "Yijing",
+            "score": 0
+        }
+    ],
+
+    "tasks": {}
+}

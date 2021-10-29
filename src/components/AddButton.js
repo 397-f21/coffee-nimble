@@ -22,15 +22,13 @@ const blankForm = () => {
   }
 }
 
-export default function AddButton({setTasks, tasks}) {
-  
-  //const [tasks, setTasks] = useState(taskList);
+export default function AddButton({tasks}) {
+
   const [open, setOpen] = React.useState(false);
   const [newTask, setNewTask] = useState(blankForm());
 
   const handleAddOpen = ( ) => {
     setOpen(true);
-    //console.log(tasks);
   };
 
   const handleClose = () => {
@@ -65,7 +63,12 @@ export default function AddButton({setTasks, tasks}) {
   const addTaskDb = async () => {
     console.log(newTask)
     try {
-      await setData(`/tasks/${tasks.length}`, newTask);
+      if (!tasks) {
+        await setData(`/tasks`, [newTask]);
+      }
+      else {
+        await setData(`/tasks`, [...tasks, newTask].sort((x, y) => x.priority - y.priority));
+      }
     } catch (error) {
       alert(error);
     }
@@ -73,10 +76,10 @@ export default function AddButton({setTasks, tasks}) {
   };
 
 
-  const addTask = () => {
-    setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
-    handleClose();
-  };
+  // const addTask = () => {
+  //   setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
+  //   handleClose();
+  // };
 
   return (
     <div id="addButton">
@@ -100,10 +103,10 @@ export default function AddButton({setTasks, tasks}) {
               />
             <div id="selects">
               <FormControl fullWidth>
-                <InputLabel>Difficulty</InputLabel>
+                <InputLabel>Complexity</InputLabel>
                 <Select
                   value={newTask.difficulty}
-                  label="Difficulty"
+                  label="Complexity"
                   onChange={handleDifficultyChange}
                   >
                   <MenuItem value={1}>1</MenuItem>
@@ -126,7 +129,7 @@ export default function AddButton({setTasks, tasks}) {
                   <MenuItem value={4}>4</MenuItem>
                   <MenuItem value={5}>5</MenuItem>
                 </Select>
-                <FormHelperText>1=trivial, 5=urgent</FormHelperText>
+                <FormHelperText>1=urgent, 5=trivial</FormHelperText>
               </FormControl>
             </div>
           </div>
