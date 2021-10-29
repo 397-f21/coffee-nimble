@@ -25,13 +25,15 @@ export default function TaskCard({ task }) {
               {task.priority}
             </Typography>
           </div>
-          <Typography variant="subtitle1" component="div" sx={{ width: 75 }}>
-            {task.assignees.map((listitem) => (
-              <li key={listitem.name} className={listitem.name}>
-                {listitem.name}
-              </li>
-            ))}
-          </Typography>       
+          <div className="assignees">
+            <Typography variant="subtitle1" component="div" sx={{ width: 75 }}>
+              {task.assignees.map((listitem) => (
+                <li key={listitem.name} className={listitem.name}>
+                  {listitem.name}
+                </li>
+              ))}
+            </Typography>  
+          </div>     
           {/* <Checkbox checked={task().completed} /> */}
           <ControlledCheckbox isChecked={task.completed}></ControlledCheckbox>
         </CardContent>

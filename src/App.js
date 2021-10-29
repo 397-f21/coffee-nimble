@@ -4,6 +4,7 @@ import TaskCard from "./components/TaskCard";
 import AssignButton from './components/assignButton';
 import Typography from "@mui/material/Typography";
 import React, { useState} from 'react';
+import { useData } from './Utilities/firebase.js';
 
 let taskList = [
   // {
@@ -79,9 +80,17 @@ let mems = [
 ]
 
 function App() {
+  const [scores, loading0, error0] = useData('/scores');
+  const [dbTasks, loading1, error1] = useData('/tasks');
+  const [dbMembers, loading2, error2] = useData('/teammates'); 
   const [tasks, setTasks] = useState(taskList);
   const [members, setMems] = useState(mems);
-  console.log(members)
+  console.log(scores)
+  console.log(dbTasks)
+  console.log(dbMembers)
+
+  if (error1) return <h1>{error1}</h1>;
+  if (loading1) return <h1>Loading tasks...</h1>;
 
   return (
     <div className="App">
@@ -96,6 +105,7 @@ function App() {
       <div>
         <div className="button-group">
           <AddButton 
+            tasks={dbTasks}
             setTasks={setTasks}/>
           <AssignButton 
             members={members} 

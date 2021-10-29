@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
-
+import { setData } from "../Utilities/firebase";
 
 const blankForm = () => {
   return {
@@ -22,7 +22,7 @@ const blankForm = () => {
   }
 }
 
-export default function AddButton({setTasks}) {
+export default function AddButton({setTasks, tasks}) {
   
   //const [tasks, setTasks] = useState(taskList);
   const [open, setOpen] = React.useState(false);
@@ -62,6 +62,17 @@ export default function AddButton({setTasks}) {
     }));
   };
 
+  const addTaskDb = async () => {
+    console.log(newTask)
+    try {
+      await setData(`/tasks/${tasks.length}`, newTask);
+    } catch (error) {
+      alert(error);
+    }
+    handleClose()
+  };
+
+
   const addTask = () => {
     setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
     handleClose();
@@ -93,7 +104,6 @@ export default function AddButton({setTasks}) {
                 <Select
                   value={newTask.difficulty}
                   label="Difficulty"
-                  helperText="1 = easy, 3 = hard"
                   onChange={handleDifficultyChange}
                   >
                   <MenuItem value={1}>1</MenuItem>
@@ -108,7 +118,6 @@ export default function AddButton({setTasks}) {
                 <Select
                   value={newTask.priority}
                   label="Priority"
-                  helperText="1 = high, 5 = low"
                   onChange={handlePriorityChange}
                   >
                   <MenuItem value={1}>1</MenuItem>
@@ -124,7 +133,7 @@ export default function AddButton({setTasks}) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={addTask}>Add</Button>
+          <Button onClick={addTaskDb}>Add</Button>
         </DialogActions>
       </Dialog>
     </div>
