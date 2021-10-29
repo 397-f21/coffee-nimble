@@ -1,87 +1,14 @@
 import './App.css';
 import AddButton from './components/AddButton';
 import TaskCard from "./components/TaskCard";
-import AssignButton from './components/assignButton';
+import AssignButton from './components/AssignButton';
 import Typography from "@mui/material/Typography";
-import React, { useState} from 'react';
-
-let taskList = [
-  // {
-  //     "description": "create task component",
-  //     "difficulty": 1,
-  //     "assignees": [
-  //     ],
-  //     "priority": 5,
-  //     "completed": false
-  // },
-  // {
-  //     "description": "Assign tasks button",
-  //     "difficulty": 2,
-  //     "assignees": [
-  //     ],
-  //     "priority": 5,
-  //     "completed": false
-  // },
-  // {
-  //     "description": "task List",
-  //     "difficulty": 3,
-  //     "assignees": [
-  //     ],
-  //     "priority": 3,
-  //     "completed": false
-  // },
-  // {
-  //     "description": "login",
-  //     "difficulty": 3,
-  //     "assignees": [
-
-  //     ],
-  //     "priority": 2,
-  //     "completed": false
-  // },
-  // {
-  //     "description": "mood tracking",
-  //     "difficulty": 1,
-  //     "assignees": [
-
-  //     ],
-  //     "priority": 1,
-  //     "completed": false
-  // },
-]
-
-let mems = [
-  {
-      "name": "Jake",
-      "score": 0
-  }, 
-  {
-      "name": "Misha",
-      "score": 0
-  }, 
-
-  {
-      "name": "Carina",
-      "score": 0
-  },
-  {
-      "name": "Iris",
-      "score": 0
-  }, 
-  {
-      "name": "Daniel",
-      "score": 0
-  }, 
-  {
-      "name": "Yijing",
-      "score": 0
-  }
-]
+import React from 'react';
+import { useData } from './Utilities/firebase.js';
 
 function App() {
-  const [tasks, setTasks] = useState(taskList);
-  const [members, setMems] = useState(mems);
-  console.log(members)
+  const [dbTasks, tasksLoading, tasksError] = useData('/tasks');
+  const [dbMembers, membersLoading, membersError] = useData('/members'); 
 
   return (
     <div className="App">
@@ -95,20 +22,25 @@ function App() {
       </header>
       <div>
         <div className="button-group">
-          <AddButton 
-            setTasks={setTasks}/>
+          <AddButton
+            tasks={dbTasks} />
           <AssignButton 
-            members={members} 
-            tasks={tasks} 
-            setTasks={setTasks} 
-            setMems={setMems} />
+            members={dbMembers} 
+            tasks={dbTasks} 
+            loading={tasksLoading}/>
         </div>
         <div className="task-list">
-          {tasks.map((task) => ( 
-            <TaskCard
+          {tasksError ?
+            <Typography className="title" variant="h5">{tasksError}</Typography>
+            : tasksLoading ?
+            <Typography className="title" variant="h6">tasks loading...</Typography>
+            : dbTasks === null ?
+            <Typography className="title" variant="h5">add tasks!</Typography>
+            : dbTasks.map((task) => ( 
+              <TaskCard
               task={task}
               key={task.description}
-            />
+              />
             ))
           }
         </div>

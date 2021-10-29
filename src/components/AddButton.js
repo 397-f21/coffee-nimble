@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
-
+import { setData } from "../Utilities/firebase";
 
 const blankForm = () => {
   return {
@@ -22,15 +22,13 @@ const blankForm = () => {
   }
 }
 
-export default function AddButton({setTasks}) {
-  
-  //const [tasks, setTasks] = useState(taskList);
+export default function AddButton({tasks}) {
+
   const [open, setOpen] = React.useState(false);
   const [newTask, setNewTask] = useState(blankForm());
 
   const handleAddOpen = ( ) => {
     setOpen(true);
-    //console.log(tasks);
   };
 
   const handleClose = () => {
@@ -62,10 +60,26 @@ export default function AddButton({setTasks}) {
     }));
   };
 
-  const addTask = () => {
-    setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
-    handleClose();
+  const addTaskDb = async () => {
+    console.log(newTask)
+    try {
+      if (!tasks) {
+        await setData(`/tasks`, [newTask]);
+      }
+      else {
+        await setData(`/tasks`, [...tasks, newTask].sort((x, y) => x.priority - y.priority));
+      }
+    } catch (error) {
+      alert(error);
+    }
+    handleClose()
   };
+
+
+  // const addTask = () => {
+  //   setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
+  //   handleClose();
+  // };
 
   return (
     <div id="addButton">
@@ -89,11 +103,10 @@ export default function AddButton({setTasks}) {
               />
             <div id="selects">
               <FormControl fullWidth>
-                <InputLabel>Difficulty</InputLabel>
+                <InputLabel>Complexity</InputLabel>
                 <Select
                   value={newTask.difficulty}
-                  label="Difficulty"
-                  helperText="1 = easy, 3 = hard"
+                  label="Complexity"
                   onChange={handleDifficultyChange}
                   >
                   <MenuItem value={1}>1</MenuItem>
@@ -108,7 +121,6 @@ export default function AddButton({setTasks}) {
                 <Select
                   value={newTask.priority}
                   label="Priority"
-                  helperText="1 = high, 5 = low"
                   onChange={handlePriorityChange}
                   >
                   <MenuItem value={1}>1</MenuItem>
@@ -117,14 +129,14 @@ export default function AddButton({setTasks}) {
                   <MenuItem value={4}>4</MenuItem>
                   <MenuItem value={5}>5</MenuItem>
                 </Select>
-                <FormHelperText>1=trivial, 5=urgent</FormHelperText>
+                <FormHelperText>1=urgent, 5=trivial</FormHelperText>
               </FormControl>
             </div>
           </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={addTask}>Add</Button>
+          <Button onClick={addTaskDb}>Add</Button>
         </DialogActions>
       </Dialog>
     </div>
