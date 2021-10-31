@@ -34,3 +34,32 @@ it("Assign button doesn't work when the list of tasks is empty", () => {
   expect(taskList).toEqual(updatedtaskList);
   expect(mems).toEqual(updatedMems);
 });
+
+it("Assign button variant is 'outlined' if tasks is not an array containing unassigned tasks", () => {
+  const taskList = undefined;
+  const { container } = render(<AssignButton 
+            members={mems} 
+            tasks={taskList} 
+            loading={false}/>);
+
+  const button = container.firstChild
+  expect(button.prop('variant')).toBe('outlined');
+});
+
+it("Assign button variant is 'contained' if tasks is an array containing unassigned tasks", () => {
+  const taskList = [
+      {
+        "description": "create task component",
+        "difficulty": 3,
+        "priority": 5,
+        "completed": false
+      }
+    ];
+  const { container } = render(<AssignButton 
+            members={mems} 
+            tasks={taskList} 
+            loading={false}/>);
+
+  const button = container.firstChild
+  expect(button.prop('variant')).toBe('contained');
+});
