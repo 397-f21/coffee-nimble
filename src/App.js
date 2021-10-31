@@ -1,7 +1,7 @@
 import './App.css';
 import AddButton from './components/AddButton';
 import TaskCard from "./components/TaskCard";
-import AssignButton from './components/AssignButton';
+import AssignButton from './components/assignButton';
 import Typography from "@mui/material/Typography";
 import React from 'react';
 import { useData } from './Utilities/firebase.js';
