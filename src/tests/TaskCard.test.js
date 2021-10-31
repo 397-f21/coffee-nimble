@@ -46,12 +46,19 @@ describe("TaskCard Component", () => {
     expect(checkbox).toHaveProperty("checked", true);
   });
 
-  it("description is displayed", () => {
+  it("description rendered properly", () => {
     act(async () => {
       const { getByTestId } = render(<TaskCard task={task1} />);
-      const descriptoin =
-        getByTestId("description").querySelector(".cardDescription");
-      expect(description).toHaveValue();
+      const description = getByTestId("description");
+      expect(description).toBeTruthy();
+    });
+  });
+
+  it("priority rendered properly", () => {
+    act(async () => {
+      const { getByTestId } = render(<TaskCard task={task1} />);
+      const priority = getByTestId("priority");
+      expect(priority).toBeTruthy();
     });
   });
 });
