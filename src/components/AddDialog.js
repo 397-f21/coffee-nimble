@@ -91,6 +91,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
         <div id="newTaskForm">
           <TextField
             autoFocus
+            inputProps={{ "data-testid": "description" }}
             value={newTask.description}
             onChange={handleDescriptionChange}
             label="Short description of task"
@@ -103,6 +104,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
             <FormControl fullWidth>
               <InputLabel>Complexity</InputLabel>
               <Select
+                 inputProps={{"data-testid":"difficulty" }}
                 value={newTask.difficulty}
                 label="Complexity"
                 onChange={handleDifficultyChange}
@@ -117,6 +119,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
               <InputLabel>Priority</InputLabel>
               <Select
                 value={newTask.priority}
+                inputProps={{"data-testid":"priority"  }}
                 label="Priority"
                 onChange={handlePriorityChange}
               >
