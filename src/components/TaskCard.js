@@ -8,7 +8,7 @@ import "../App.css";
 // import $ from "jquery";
 // window.$ = $;
 
-export default function TaskCard({ task, index }) {
+export default function TaskCard({ task, index, members }) {
   return (
     <div>
       <Card className="card" sx={{ width: 330 }}>
@@ -30,8 +30,8 @@ export default function TaskCard({ task, index }) {
             <Typography variant="subtitle1" component="div" sx={{ width: 75 }}>
               {"assignees" in task ? (
                 task.assignees.map((listitem) => (
-                  <li key={listitem} className={listitem}>
-                    {listitem}
+                  <li key={listitem.name} className={listitem.id}>
+                    {listitem.name}
                   </li>
                 ))
               ) : (
@@ -40,7 +40,10 @@ export default function TaskCard({ task, index }) {
             </Typography>
           </div>
           {/* <Checkbox checked={task().completed} /> */}
-          <ControlledCheckbox isChecked={task.completed} index={index}></ControlledCheckbox>
+          <ControlledCheckbox
+            isChecked={task.completed}
+            index={index}
+          ></ControlledCheckbox>
         </CardContent>
         <CardActions></CardActions>
       </Card>

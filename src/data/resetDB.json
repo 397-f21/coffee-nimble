@@ -3,28 +3,34 @@
     "members": [
         {
             "name": "Jake",
-            "score": 0
+            "score": 0,
+            "id":1
         }, 
         {
             "name": "Misha",
-            "score": 0
+            "score": 0,
+            "id":2
         }, 
       
         {
             "name": "Carina",
-            "score": 0
+            "score": 0,
+            "id":3
         },
         {
             "name": "Iris",
-            "score": 0
+            "score": 0,
+            "id":4
         }, 
         {
             "name": "Daniel",
-            "score": 0
+            "score": 0,
+            "id":5
         }, 
         {
             "name": "Yijing",
-            "score": 0
+            "score": 0,
+            "id":6
         }
     ],
 
