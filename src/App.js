@@ -4,6 +4,7 @@ import TaskCard from "./components/TaskCard";
 import AssignButton from './components/assignButton';
 import Typography from "@mui/material/Typography";
 import React from 'react';
+import EditMembersButton from "./components/EditMembersButton"
 import { useData } from './Utilities/firebase.js';
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
             members={dbMembers} 
             tasks={dbTasks} 
             loading={tasksLoading}/>
+          <EditMembersButton 
+            members={dbMembers}/>
         </div>
         <div className="task-list">
           {tasksError ?
