@@ -1,15 +1,15 @@
-import './App.css';
-import AddButton from './components/AddButton';
+import "./App.css";
+import AddButton from "./components/AddButton";
 import TaskCard from "./components/TaskCard";
-import AssignButton from './components/assignButton';
+import AssignButton from "./components/assignButton";
 import Typography from "@mui/material/Typography";
-import React from 'react';
-import EditMembersButton from "./components/EditMembersButton"
-import { useData } from './Utilities/firebase.js';
+import React from "react";
+import EditMembersButton from "./components/EditMembersButton";
+import { useData } from "./Utilities/firebase.js";
 
 function App() {
-  const [dbTasks, tasksLoading, tasksError] = useData('/tasks');
-  const [dbMembers, membersLoading, membersError] = useData('/members'); 
+  const [dbTasks, tasksLoading, tasksError] = useData("/tasks");
+  const [dbMembers, membersLoading, membersError] = useData("/members");
 
   return (
     <div className="App">
@@ -23,30 +23,37 @@ function App() {
       </header>
       <div>
         <div className="button-group">
-          <AddButton
-            tasks={dbTasks} />
-          <AssignButton 
-            members={dbMembers} 
-            tasks={dbTasks} 
-            loading={tasksLoading}/>
-          <EditMembersButton 
-            members={dbMembers}/>
+          <AddButton tasks={dbTasks} />
+          <AssignButton
+            members={dbMembers}
+            tasks={dbTasks}
+            loading={tasksLoading}
+          />
+          <EditMembersButton members={dbMembers} />
         </div>
         <div className="task-list">
-          {tasksError ?
-            <Typography className="title" variant="h5">{tasksError}</Typography>
-            : tasksLoading ?
-            <Typography className="title" variant="h6">tasks loading...</Typography>
-            : dbTasks === null ?
-            <Typography className="title" variant="h5">add tasks!</Typography>
-            : dbTasks.map((task, index) => ( 
+          {tasksError ? (
+            <Typography className="title" variant="h5">
+              {tasksError}
+            </Typography>
+          ) : tasksLoading ? (
+            <Typography className="title" variant="h6">
+              tasks loading...
+            </Typography>
+          ) : dbTasks === null ? (
+            <Typography className="title" variant="h5">
+              add tasks!
+            </Typography>
+          ) : (
+            dbTasks.map((task, index) => (
               <TaskCard
-              task={task}
-              index={index}
-              key={task.description}
+                task={task}
+                index={index}
+                members={dbMembers}
+                key={task.description}
               />
             ))
-          }
+          )}
         </div>
       </div>
     </div>

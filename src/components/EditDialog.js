@@ -15,7 +15,8 @@ import { setData } from "../Utilities/firebase";
 const blankForm = () => {
   return {
     name: "",
-    score: 0
+    score: 0,
+    id: -1,
   };
 };
 
@@ -43,11 +44,10 @@ export default function EditDialog({ open, members, setOpen }) {
     const newMember = event.target.value;
     setNewMember((prevState) => ({
       ...prevState,
-      ['name'] : newMember
+      ["name"]: newMember,
+      ["id"]: members ? Array.from(members).length + 1 : 1,
     }));
   };
-
-
 
   const addMemberDb = async () => {
     if (true) {
@@ -55,10 +55,7 @@ export default function EditDialog({ open, members, setOpen }) {
         if (!members) {
           await setData(`/members`, [newMember]);
         } else {
-          await setData(
-            `/members`,
-            [...members, newMember]
-          );
+          await setData(`/members`, [...members, newMember]);
         }
       } catch (error) {
         console.log(newMember);
@@ -79,14 +76,13 @@ export default function EditDialog({ open, members, setOpen }) {
             onChange={handleMemberChange}
             label="Name"
             type="text"
-            variant="standard"/>
+            variant="standard"
+          />
         </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={addMemberDb}>
-          Add
-        </Button>
+        <Button onClick={addMemberDb}>Add</Button>
       </DialogActions>
     </Dialog>
   );

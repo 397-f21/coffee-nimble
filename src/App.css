@@ -21,7 +21,6 @@
   align-items: center;
   padding-bottom: 20px;
   gap: 10px;
-
 }
 
 .priority {
@@ -73,34 +72,87 @@ li {
   margin: 2px;
 }
 
-.Yijing {
+.\31 {
   background: rgb(0, 183, 255);
 }
 
-.Misha {
+.\32 {
   background: rgb(0, 255, 157);
 }
 
-.Daniel {
+.\33 {
   background: rgb(188, 124, 207);
 }
 
-.Jake {
+.\34 {
   background: rgb(245, 238, 139);
 }
 
-.Iris {
+.\35 {
   background: rgb(245, 139, 139);
 }
 
-.Carina {
-  background: rgb(76, 127, 238);
+.\36 {
+  background: rgb(196, 230, 152);
 }
 
+.\37 {
+  background: rgb(250, 190, 212);
+}
 
+.\38 {
+  background: rgb(169, 169, 169);
+}
+
+.\39 {
+  background: rgb(240, 50, 230);
+}
+
+.\310 {
+  background: rgb(240, 248, 255);
+}
+
+.\311 {
+  background: rgb(250, 235, 215);
+}
+
+.\312 {
+  background: rgb(210, 105, 30);
+}
+
+.\313 {
+  background: rgb(119, 136, 153);
+}
+
+.\314 {
+  background: rgb(147, 112, 219);
+}
+
+.\315 {
+  background: rgb(240, 128, 128);
+}
+
+.\316 {
+  background: rgb(255, 160, 122);
+}
+
+.\317 {
+  background: rgb(173, 216, 230);
+}
+
+.\318 {
+  background: rgb(216, 191, 216);
+}
+
+.\319 {
+  background: rgb(200, 112, 126);
+}
+
+.\320 {
+  background: rgb(0, 191, 255);
+}
 /* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 } */
-
