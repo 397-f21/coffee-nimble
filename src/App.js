@@ -36,9 +36,10 @@ function App() {
             <Typography className="title" variant="h6">tasks loading...</Typography>
             : dbTasks === null ?
             <Typography className="title" variant="h5">add tasks!</Typography>
-            : dbTasks.map((task) => ( 
+            : dbTasks.map((task, index) => ( 
               <TaskCard
               task={task}
+              index={index}
               key={task.description}
               />
             ))

@@ -8,7 +8,7 @@ import "../App.css";
 // import $ from "jquery";
 // window.$ = $;
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, index }) {
   return (
     <div>
       <Card className="card" sx={{ width: 330 }}>
@@ -40,7 +40,7 @@ export default function TaskCard({ task }) {
             </Typography>
           </div>
           {/* <Checkbox checked={task().completed} /> */}
-          <ControlledCheckbox isChecked={task.completed}></ControlledCheckbox>
+          <ControlledCheckbox isChecked={task.completed} index={index}></ControlledCheckbox>
         </CardContent>
         <CardActions></CardActions>
       </Card>

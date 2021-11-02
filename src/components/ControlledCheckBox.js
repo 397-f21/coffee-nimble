@@ -1,12 +1,21 @@
 import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
+import { setData } from "../Utilities/firebase";
 
-export default function ControlledCheckbox({ isChecked }) {
+export default function ControlledCheckbox({ isChecked, index }) {
   const [checked, setChecked] = React.useState(isChecked);
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
+    
     setChecked(event.target.checked);
+    try {
+      await setData('/tasks/' + index + '/completed', event.target.checked )
+    } catch (error) {
+      alert(error);
+    }
   };
+
+  
 
   return (
     <Checkbox
