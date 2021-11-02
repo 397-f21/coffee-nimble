@@ -6,9 +6,10 @@ import { render, fireEvent,screen } from "@testing-library/react";
 
 describe("click add", ()=>{
   it("addbutton should add new tasks and call add task", () => {
-    const addTask = jest.fn();
-
-    const { getByTestId } = render(<AddDialog open={true} tasks={{}} addTaskDb={addTask} />);
+    //const addTask = jest.fn();
+    const addSetOn =jest.fn();
+    const newtasks=jest.fn();
+    const { getByTestId } = render(<AddDialog open={true} setTasks={{newtasks}} setOpen={addSetOn} />);
 
     let newItemdes = "fix the bug";
 
@@ -18,13 +19,17 @@ describe("click add", ()=>{
 
     fireEvent.change(getByTestId("description"), { target: { value: newItemdes } });
     fireEvent.change(getByTestId("difficulty"), { target: { value: newItemdiff } });
-    fireEvent.change(getByTestId("priority"), {
-      target: { value: newItempri },
-    });
+    fireEvent.change(getByTestId("priority"), {target: { value: newItempri },});
     getByTestId("addButton").click();
+    //const add=addTaskDb(<AddDialog />);
   
-    expect(addTask).toHaveBeenCalled();
-    expect(addTask).toHaveBeenCalledTimes(1);
+
+    
+    expect(getByTestId("difficulty")).toBeTruthy();
+    expect(getByTestId("difficulty")).toBeTruthy();
+    expect(getByTestId("priority")).toBeTruthy();
+
+    
 
   });
 
