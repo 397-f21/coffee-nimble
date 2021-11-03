@@ -26,7 +26,7 @@ export default function TaskCard({ task, index, members }) {
             </Typography>
             <Typography variant="button">{task.priority}</Typography>
           </div>
-          <div className="assignees">
+          <div data-testid="assignees" className="assignees">
             <Typography variant="subtitle1" component="div" sx={{ width: 75 }}>
               {"assignees" in task ? (
                 task.assignees.map((listitem) => (
