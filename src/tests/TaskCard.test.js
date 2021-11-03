@@ -61,4 +61,12 @@ describe("TaskCard Component", () => {
       expect(priority).toBeTruthy();
     });
   });
+
+  it("members rendered properly", () => {
+    act(async () => {
+        const { getByTestId } = render(<TaskCard task={task2} />);
+        const assignees = getByTestId("assignees");
+        expect(assignees).toBeTruthy();
+      });
+  })
 });
