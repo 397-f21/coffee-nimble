@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <AppBar className="App-header"  >
-      <Typography className="title" variant="h8"  >
+      <Typography data-cy="nimble" className="title" variant="h8"  >
           nimble
       </Typography>
       </AppBar>

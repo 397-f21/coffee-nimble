@@ -86,7 +86,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
 
   return (
     <Dialog data-testid="dialogTestId" open={open} onClose={handleClose}>
-      <DialogTitle>Enter New Task Information</DialogTitle>
+      <DialogTitle data-cy="addTaskTitle">Enter New Task Information</DialogTitle>
       <DialogContent>
         <div id="newTaskForm">
           <TextField
