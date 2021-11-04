@@ -1,7 +1,7 @@
 import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { setData } from "../Utilities/firebase";
-
+//mock ^ module 
 export default function ControlledCheckbox({ isChecked, index }) {
   const [checked, setChecked] = React.useState(isChecked);
 
