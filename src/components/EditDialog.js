@@ -53,13 +53,15 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
                       'completed' : task.completed,
                       'assignees' : []
                     }
-      for (let person of task.assignees){
-        if (person.name !== name){
-          let newAssignee = { 'name' : person.name,
-                              'score' : person.score,
-                              'id' : person.id 
+      if (task.assignees.length>0){
+        for (let person of task.assignees){
+          if (person.name !== name){
+            let newAssignee = { 'name' : person.name,
+                                'score' : person.score,
+                                'id' : person.id 
+            }
+            newTask.assignees.push(newAssignee);
           }
-          newTask.assignees.push(newAssignee);
         }
       }
       newTasks.push(newTask);
@@ -106,6 +108,13 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
     <Dialog data-testid="dialogTestId" open={open} onClose={handleClose}>
       <DialogTitle>Edit Members</DialogTitle>
       <DialogContent>
+        <div id='curMembers'>
+        {members ? members.map((listitem) => (
+                  <li key={listitem.name} className={listitem.id}>
+                    {listitem.name}
+                  </li>
+                )): <div></div>}
+        </div>
         <div id="newTaskForm">
           <TextField
             autoFocus
