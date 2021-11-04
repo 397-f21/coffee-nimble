@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { setData } from "../Utilities/firebase";
+import { setData,useData } from "../Utilities/firebase";
 
 const blankForm = () => {
   return {
@@ -15,7 +15,7 @@ const blankForm = () => {
   };
 };
 
-export default function EditDialog({ open, members, setOpen }) {
+export default function EditDialog({ open, members, tasks, setOpen }) {
   const [newMember, setNewMember] = useState(blankForm());
   const [hasError, setHasError] = useState(false);
 
@@ -44,6 +44,48 @@ export default function EditDialog({ open, members, setOpen }) {
     }));
   };
 
+  const afterDeletionTasks = (tasks,name) =>{
+    let newTasks = [];
+    for (let task of tasks){
+      let newTask = {'description' : task.description,
+                      'difficulty' : task.difficulty,
+                      'priority' : task.priority,
+                      'completed' : task.completed,
+                      'assignees' : []
+                    }
+      for (let person of task.assignees){
+        if (person.name !== name){
+          let newAssignee = { 'name' : person.name,
+                              'score' : person.score,
+                              'id' : person.id 
+          }
+          newTask.assignees.push(newAssignee);
+        }
+      }
+      newTasks.push(newTask);
+    }
+    console.log(newTasks);
+    return newTasks;
+  }
+
+  const deleteMemberDb = async() => {
+    if (members.length>0){
+      try {
+        let potentialDelete = members.filter(mem => mem.name === newMember.name);
+        if (potentialDelete.length>0){
+          // console.log(potentialDelete);
+          // console.log('found name');
+          await setData(`/members`, [...members.filter(mem => mem.name !== newMember.name)]);
+          await setData(`/tasks`, afterDeletionTasks(tasks,newMember.name) );
+        } else {
+          alert(`Member with name ${newMember.name} not found`)
+        }
+      } catch(error){
+        alert(error);
+      }
+      handleClose();
+    }
+  }
   const addMemberDb = async () => {
     if (validate()) {
       try {
@@ -62,7 +104,7 @@ export default function EditDialog({ open, members, setOpen }) {
 
   return (
     <Dialog data-testid="dialogTestId" open={open} onClose={handleClose}>
-      <DialogTitle>Enter New Member</DialogTitle>
+      <DialogTitle>Edit Members</DialogTitle>
       <DialogContent>
         <div id="newTaskForm">
           <TextField
@@ -80,6 +122,7 @@ export default function EditDialog({ open, members, setOpen }) {
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={addMemberDb}>Add</Button>
+        <Button onClick={deleteMemberDb}>Delete Member</Button>
       </DialogActions>
     </Dialog>
   );

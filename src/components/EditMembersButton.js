@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import EditDialog from "./EditDialog";
 
-export default function EditMembersButton({ members }) {
+export default function EditMembersButton({ members, tasks }) {
   const [open, setOpen] = React.useState(false);
 
   const handleAddOpen = () => {
@@ -13,9 +13,9 @@ export default function EditMembersButton({ members }) {
   return (
     <div id="EditMembersButton">
       <Button variant="contained" color="secondary" onClick={handleAddOpen}>
-        Add members
+        Edit members
       </Button>
-      <EditDialog open={open} members={members} setOpen={setOpen}></EditDialog>
+      <EditDialog open={open} members={members} tasks = {tasks} setOpen={setOpen}></EditDialog>
     </div>
   );
 }

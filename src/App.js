@@ -25,7 +25,7 @@ function App() {
         <Typography className="title" variant="h5">
           Welcome team coffee!
         </Typography>
-        <EditMembersButton members={dbMembers} />
+        <EditMembersButton members={dbMembers} tasks = {dbTasks} />
       </header>
       </div>
       <div>
