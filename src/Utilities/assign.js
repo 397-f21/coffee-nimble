@@ -5,19 +5,21 @@ const customPriorityComparator = (a, b) => a.score - b.score;
 const assignTasks = (members, tasks) => {
   const priorityQueue = new Heap(customPriorityComparator);
   priorityQueue.init(members);
-  let filteredTasks = tasks
+  let filteredTasks = tasks ? tasks
     .filter((task) => task.assignees === undefined)
-    .sort((a, b) => a.difficulty > b.difficulty);
+    .sort((a, b) => a.difficulty > b.difficulty) : [];
   let newTasks = JSON.parse(JSON.stringify(filteredTasks));
   let tmpMembers = [];
   newTasks.forEach((task) => {
     task.assignees = [];
     for (let i = 0; i < task.difficulty; i++) {
+      if (priorityQueue.length>0){
       let curMember = priorityQueue.pop();
       curMember.score += task.difficulty;
       tmpMembers.push(curMember);
       // task.assignees.push(curMember);
       task.assignees.push(curMember); // since we don't need to store the assignees' scores at the time of assignment, right?
+      }
     }
     for (let member of tmpMembers) {
       priorityQueue.push(member);
@@ -28,6 +30,9 @@ const assignTasks = (members, tasks) => {
     updatedMembers.push(priorityQueue.pop());
   }
   // console.log(JSON.stringify({tasks: [tasks.filter(task => task.assignees.length > 0), ...newTasks], mems: updatedMembers}));
+  if (tasks === null){
+    tasks = [];
+  }
   return {
     tasks: [
       ...tasks.filter((task) => task.assignees !== undefined),
