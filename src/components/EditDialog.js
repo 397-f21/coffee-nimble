@@ -5,11 +5,6 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import FormHelperText from "@mui/material/FormHelperText";
 import { setData } from "../Utilities/firebase";
 
 const blankForm = () => {
@@ -24,15 +19,15 @@ export default function EditDialog({ open, members, setOpen }) {
   const [newMember, setNewMember] = useState(blankForm());
   const [hasError, setHasError] = useState(false);
 
-  // const validate = () => {
-  //   if (!newMember.description) {
-  //     setHasError(true);
-  //     return false;
-  //   } else {
-  //     setHasError(false);
-  //     return true;
-  //   }
-  // };
+  const validate = () => {
+    if (!newMember.name) {
+      setHasError(true);
+      return false;
+    } else {
+      setHasError(false);
+      return true;
+    }
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -50,7 +45,7 @@ export default function EditDialog({ open, members, setOpen }) {
   };
 
   const addMemberDb = async () => {
-    if (true) {
+    if (validate()) {
       try {
         if (!members) {
           await setData(`/members`, [newMember]);
@@ -77,6 +72,8 @@ export default function EditDialog({ open, members, setOpen }) {
             label="Name"
             type="text"
             variant="standard"
+            error={hasError}
+            helperText={hasError ? "Please enter name." : ""}
           />
         </div>
       </DialogContent>

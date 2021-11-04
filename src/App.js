@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import EditMembersButton from "./components/EditMembersButton";
 import { useData } from "./Utilities/firebase.js";
+import { AppBar } from "@mui/material";
 
 function App() {
   const [dbTasks, tasksLoading, tasksError] = useData("/tasks");
@@ -13,15 +14,24 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Typography className="title" variant="h2">
+      <AppBar className="App-header"  >
+      <Typography className="title" variant="h8"  >
           nimble
-        </Typography>
+      </Typography>
+      </AppBar>
+    <div/>
+    <div>
+      <header className="App-team">
         <Typography className="title" variant="h5">
-          tasks for team coffee
+          Welcome team coffee!
         </Typography>
+        <EditMembersButton members={dbMembers} />
       </header>
+      </div>
       <div>
+       <Typography className="title" variant="h6">
+          TaskList
+        </Typography>
         <div className="button-group">
           <AddButton tasks={dbTasks} />
           <AssignButton
@@ -29,7 +39,7 @@ function App() {
             tasks={dbTasks}
             loading={tasksLoading}
           />
-          <EditMembersButton members={dbMembers} />
+          
         </div>
         <div className="task-list">
           {tasksError ? (
@@ -41,8 +51,8 @@ function App() {
               tasks loading...
             </Typography>
           ) : dbTasks === null ? (
-            <Typography className="title" variant="h5">
-              add tasks!
+            <Typography className="title" variant="h9">
+              press button above to add your new tasks！
             </Typography>
           ) : (
             dbTasks.map((task, index) => (

@@ -12,8 +12,8 @@ export default function EditMembersButton({ members }) {
 
   return (
     <div id="EditMembersButton">
-      <Button variant="outlined" color="secondary" onClick={handleAddOpen}>
-        Edit members
+      <Button variant="contained" color="secondary" onClick={handleAddOpen}>
+        Add members
       </Button>
       <EditDialog open={open} members={members} setOpen={setOpen}></EditDialog>
     </div>

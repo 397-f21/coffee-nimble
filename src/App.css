@@ -7,7 +7,17 @@
   padding: 20px;
 }
 
+
 .App-header {
+  padding: 1px;
+  text-align: left;
+  background: #bea0e5;
+  color: white;
+  font-size: 20px;
+  
+}
+
+.App-team {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +45,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding-bottom: 20px;
   gap: 10px;
 }
 
