@@ -43,7 +43,7 @@ it("Assign button variant is 'outlined' if tasks is not an array containing unas
             loading={false}/>);
 
   const button = container.firstChild
-  expect(button.prop('variant')).toBe('outlined');
+  expect(button.classList.contains('MuiButton-outlined')).toBe(true)
 });
 
 it("Assign button variant is 'contained' if tasks is an array containing unassigned tasks", () => {
@@ -61,5 +61,5 @@ it("Assign button variant is 'contained' if tasks is an array containing unassig
             loading={false}/>);
 
   const button = container.firstChild
-  expect(button.prop('variant')).toBe('contained');
+  expect(button.classList.contains('MuiButton-contained')).toBe(true)
 });
