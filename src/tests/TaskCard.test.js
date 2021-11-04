@@ -2,6 +2,7 @@ import { render, fireEvent } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import ControlledCheckbox from "../components/ControlledCheckBox";
 import TaskCard from "../components/TaskCard";
+import { setData } from "../Utilities/firebase";
 
 describe("TaskCard Component", () => {
   let task1 = {
@@ -47,7 +48,7 @@ describe("TaskCard Component", () => {
   });
 
   it("description rendered properly", () => {
-    act(async () => {
+    act(() => {
       const { getByTestId } = render(<TaskCard task={task1} />);
       const description = getByTestId("description");
       expect(description).toBeTruthy();
@@ -55,7 +56,7 @@ describe("TaskCard Component", () => {
   });
 
   it("priority rendered properly", () => {
-    act(async () => {
+    act(() => {
       const { getByTestId } = render(<TaskCard task={task1} />);
       const priority = getByTestId("priority");
       expect(priority).toBeTruthy();
@@ -63,10 +64,33 @@ describe("TaskCard Component", () => {
   });
 
   it("members rendered properly", () => {
-    act(async () => {
+    act(() => {
         const { getByTestId } = render(<TaskCard task={task2} />);
         const assignees = getByTestId("assignees");
         expect(assignees).toBeTruthy();
       });
   })
+
+  it("mock testing that button calls setData", () => {
+    act( () => {
+      const index = 56;
+      const helpers = require("../Utilities/firebase");
+      const setDataMock = jest.spyOn(helpers, "setData")
+      
+      expect(helpers.setData.mock).toBeTruthy();
+      const { getByTestId } = render(<TaskCard task={task1} index={index}/>);
+      const checkbox = getByTestId("checkbox").querySelector(
+        'input[type="checkbox"]'
+      );
+      fireEvent.click(checkbox);
+      expect(setDataMock).toHaveBeenCalledTimes(1);
+      expect(setDataMock).toHaveBeenNthCalledWith(1, '/tasks/' + index + '/completed', true);
+      fireEvent.click(checkbox);
+      expect(checkbox).toHaveProperty("checked", false);
+      expect(setDataMock).toHaveBeenCalledTimes(2);
+      expect(setDataMock).toHaveBeenNthCalledWith(2, '/tasks/' + index + '/completed', true);
+      
+    })
+  })
+
 });
