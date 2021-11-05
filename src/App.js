@@ -48,8 +48,8 @@ function App() {
             <div>
                 {curProj === -1 ?
                     <div>
-                        <AddProject setCurProj={curProjectHandler}/>
-                        <JoinProjectButton setCurProj={curProjectHandler}/>
+                        <AddProject setCurProj={CurProjectHandler}/>
+                        <JoinProjectButton setCurProj={CurProjectHandler}/>
                     </div>
                     :
                     <div>
