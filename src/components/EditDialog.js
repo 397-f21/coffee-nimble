@@ -57,7 +57,7 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
           completed: task.completed,
           assignees: [],
         };
-        if (task.assignees.length > 0) {
+        if (task.assignees) {
           for (let person of task.assignees) {
             if (person.name !== name) {
               let newAssignee = {
