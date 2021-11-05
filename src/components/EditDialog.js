@@ -46,27 +46,29 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
 
   const afterDeletionTasks = (tasks,name) =>{
     let newTasks = [];
-    for (let task of tasks){
-      let newTask = {'description' : task.description,
-                      'difficulty' : task.difficulty,
-                      'priority' : task.priority,
-                      'completed' : task.completed,
-                      'assignees' : []
-                    }
-      if (task.assignees.length>0){
-        for (let person of task.assignees){
-          if (person.name !== name){
-            let newAssignee = { 'name' : person.name,
-                                'score' : person.score,
-                                'id' : person.id 
+    if (tasks !== null){
+      for (let task of tasks){
+        let newTask = {'description' : task.description,
+                        'difficulty' : task.difficulty,
+                        'priority' : task.priority,
+                        'completed' : task.completed,
+                        'assignees' : []
+                      }
+        if (task.assignees.length>0){
+          for (let person of task.assignees){
+            if (person.name !== name){
+              let newAssignee = { 'name' : person.name,
+                                  'score' : person.score,
+                                  'id' : person.id 
+              }
+              newTask.assignees.push(newAssignee);
             }
-            newTask.assignees.push(newAssignee);
           }
         }
+        newTasks.push(newTask);
       }
-      newTasks.push(newTask);
+      console.log(newTasks);
     }
-    console.log(newTasks);
     return newTasks;
   }
 
@@ -85,7 +87,7 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
       } catch(error){
         alert(error);
       }
-      handleClose();
+      // handleClose();
     }
   }
   const addMemberDb = async () => {
@@ -100,7 +102,7 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
         console.log(newMember);
         alert(error);
       }
-      handleClose();
+      // handleClose();
     }
   };
 
