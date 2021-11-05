@@ -5,7 +5,9 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { setData,useData } from "../Utilities/firebase";
+import { setData, useData } from "../Utilities/firebase";
+import $ from "jquery";
+window.$ = $;
 
 const blankForm = () => {
   return {
@@ -44,23 +46,25 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
     }));
   };
 
-  const afterDeletionTasks = (tasks,name) =>{
+  const afterDeletionTasks = (tasks, name) => {
     let newTasks = [];
-    if (tasks !== null){
-      for (let task of tasks){
-        let newTask = {'description' : task.description,
-                        'difficulty' : task.difficulty,
-                        'priority' : task.priority,
-                        'completed' : task.completed,
-                        'assignees' : []
-                      }
-        if (task.assignees.length>0){
-          for (let person of task.assignees){
-            if (person.name !== name){
-              let newAssignee = { 'name' : person.name,
-                                  'score' : person.score,
-                                  'id' : person.id 
-              }
+    if (tasks !== null) {
+      for (let task of tasks) {
+        let newTask = {
+          description: task.description,
+          difficulty: task.difficulty,
+          priority: task.priority,
+          completed: task.completed,
+          assignees: [],
+        };
+        if (task.assignees.length > 0) {
+          for (let person of task.assignees) {
+            if (person.name !== name) {
+              let newAssignee = {
+                name: person.name,
+                score: person.score,
+                id: person.id,
+              };
               newTask.assignees.push(newAssignee);
             }
           }
@@ -70,26 +74,29 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
       console.log(newTasks);
     }
     return newTasks;
-  }
+  };
 
-  const deleteMemberDb = async() => {
-    if (members.length>0){
+  const deleteMemberDb = async () => {
+    if (members.length > 0) {
       try {
-        let potentialDelete = members.filter(mem => mem.name === newMember.name);
-        if (potentialDelete.length>0){
-          // console.log(potentialDelete);
-          // console.log('found name');
-          await setData(`/members`, [...members.filter(mem => mem.name !== newMember.name)]);
-          await setData(`/tasks`, afterDeletionTasks(tasks,newMember.name) );
+        let potentialDelete = members.filter(
+          (mem) => mem.name === newMember.name
+        );
+        if (potentialDelete.length > 0) {
+          await setData(`/members`, [
+            ...members.filter((mem) => mem.name !== newMember.name),
+          ]);
+          await setData(`/tasks`, afterDeletionTasks(tasks, newMember.name));
         } else {
-          alert(`Member with name ${newMember.name} not found`)
+          alert(`Member with name ${newMember.name} not found`);
         }
-      } catch(error){
+      } catch (error) {
         alert(error);
       }
       // handleClose();
     }
-  }
+    $("#nameField").val("");
+  };
   const addMemberDb = async () => {
     if (validate()) {
       try {
@@ -104,23 +111,29 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
       }
       // handleClose();
     }
+    $("#nameField").val("");
   };
 
   return (
     <Dialog data-testid="dialogTestId" open={open} onClose={handleClose}>
       <DialogTitle>Edit Members</DialogTitle>
       <DialogContent>
-        <div id='curMembers'>
-        {members ? members.map((listitem) => (
-                  <li key={listitem.name} className={listitem.id}>
-                    {listitem.name}
-                  </li>
-                )): <div></div>}
+        <div id="curMembers">
+          {members ? (
+            members.map((listitem) => (
+              <li key={listitem.name} className={listitem.id}>
+                {listitem.name}
+              </li>
+            ))
+          ) : (
+            <div></div>
+          )}
         </div>
         <div id="newTaskForm">
           <TextField
+            id="nameField"
             autoFocus
-            value={newMember.name}
+            //value={newMember.name}
             onChange={handleMemberChange}
             label="Name"
             type="text"
