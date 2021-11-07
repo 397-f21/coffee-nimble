@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <AppBar className="App-header"  >
-      <Typography className="title" variant="h8"  >
+      <Typography data-cy="nimble" className="title" variant="h8"  >
           nimble
       </Typography>
       </AppBar>
@@ -25,7 +25,7 @@ function App() {
         <Typography className="title" variant="h5">
           Welcome team coffee!
         </Typography>
-        <EditMembersButton members={dbMembers} />
+        <EditMembersButton members={dbMembers} tasks = {dbTasks} />
       </header>
       </div>
       <div>
