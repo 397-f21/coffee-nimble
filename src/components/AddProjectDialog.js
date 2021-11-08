@@ -7,13 +7,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { setData } from "../Utilities/firebase";
 
+// need change based on the database design
 const blank = () => {
   return {
-    name: " ",
     id: -1,
-    members: " "
   };
 };
+
 
 export default function EditDialog({ open, id, setOpen }) {
   const [newProject, setNewProject] = useState(blank());
@@ -65,18 +65,18 @@ export default function EditDialog({ open, id, setOpen }) {
           <TextField
             autoFocus
             value={newProject.id}
-            onChange={handleMemberChange}
+            onChange={handleProjectChange}
             label="Name"
             type="text"
             variant="standard"
             error={hasError}
-            helperText={hasError ? "Please enter your project-id." : ""}
+            helperText={hasError ? "Please enter your project." : ""}
           />
         </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={addMemberDb}>Add</Button>
+        <Button onClick={addProjectDb}>Add</Button>
       </DialogActions>
     </Dialog>
   );
