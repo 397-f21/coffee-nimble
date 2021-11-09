@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
+import AddProjectDialog from "./AddProjectDialog";
 
 
-export default function AddProject({ id }) {
+export default function AddProject({ setProjectId }) {
   const [open, setOpen] = React.useState(false);
 
   const handleAddOpen = () => {
@@ -19,7 +20,7 @@ export default function AddProject({ id }) {
       <Button variant="outlined" color="secondary" onClick={handleAddOpen}>
         Add new project
       </Button>
-      <AddProjectDialog open={open} id={id} setOpen={setOpen}></AddProjectDialog>
+      <AddProjectDialog open={open} setProjectId={setProjectId} setOpen={setOpen}></AddProjectDialog>
     </div>
   );
 }
