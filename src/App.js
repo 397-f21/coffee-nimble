@@ -42,7 +42,7 @@ function App() {
     return (
         <div className="App">
             <AppBar className="App-header"  >
-                <Typography data-cy="nimble" className="title" variant="h8"  >
+                <Typography data-cy="nimble" variant="h8"  >
                     nimble
                 </Typography>
             </AppBar>
@@ -50,56 +50,49 @@ function App() {
             <div>
                 {curProj === -1 ?
                     <div>
-                        <AddProject setCurProj={CurProjectHandler}/>
+                        {/* <AddProject setCurProj={CurProjectHandler}/> */}
                         <JoinProjectButton setCurProj={setCurProj}/>
                     </div>
                     :
-                    <div>
-                        <div>
-                            <header className="App-team">
-                                <Typography className="title" variant="h5">
-                                    Welcome team coffee!
-                                </Typography>
-                                <EditMembersButton members={dbMembers} tasks={dbTasks} />
-                            </header>
-                        </div>
-                        <div>
-                            <Typography className="title" variant="h6">
-                                TaskList
+                    <div id="main-body">
+                        <div className="App-team">
+                            <Typography className="title" variant="h5">
+                                welcome, team coffee!
                             </Typography>
-                            <div className="button-group">
-                                <AddButton tasks={dbTasks} />
-                                <AssignButton
-                                    members={dbMembers}
-                                    tasks={dbTasks}
-                                    loading={tasksLoading}
-                                />
+                            <EditMembersButton members={dbMembers} tasks={dbTasks} />
+                        </div>
+                        <div className="button-group">
+                            <AddButton tasks={dbTasks} />
+                            <AssignButton
+                                members={dbMembers}
+                                tasks={dbTasks}
+                                loading={tasksLoading}
+                            />
 
-                            </div>
-                            <div className="task-list">
-                                {tasksError ? (
-                                    <Typography className="title" variant="h5">
-                                        {tasksError}
-                                    </Typography>
-                                ) : tasksLoading ? (
-                                    <Typography className="title" variant="h6">
-                                        tasks loading...
-                                    </Typography>
-                                ) : dbTasks === null ? (
-                                    <Typography className="title" variant="h9">
-                                        press button above to add your new tasks！
-                                    </Typography>
-                                ) : (
-                                    dbTasks.map((task, index) => (
-                                        <TaskCard
-                                            task={task}
-                                            index={index}
-                                            members={dbMembers}
-                                            key={task.description}
-                                        />
-                                    ))
-                                )}
-                            </div>
+                        </div>
+                        <div className="task-list">
+                            {tasksError ? (
+                                <Typography className="title" variant="h5">
+                                    {tasksError}
+                                </Typography>
+                            ) : tasksLoading ? (
+                                <Typography className="title" variant="h6">
+                                    tasks loading...
+                                </Typography>
+                            ) : dbTasks === null ? (
+                                <Typography className="message" variant="h9">
+                                    use the buttons above to add and assign new tasks！
+                                </Typography>
+                            ) : (
+                                dbTasks.map((task, index) => (
+                                    <TaskCard
+                                        task={task}
+                                        index={index}
+                                        members={dbMembers}
+                                        key={task.description}
+                                    />
+                                ))
+                            )}
                         </div>
                     </div>
                 }

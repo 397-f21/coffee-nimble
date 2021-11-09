@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import AddProjectDialog from "./AddProjectDialog";
 import TextField from "@mui/material/TextField";
+import { Typography } from "@mui/material";
 
 
 export default function JoinProjectButton({ setCurProj }) {
@@ -24,19 +25,35 @@ export default function JoinProjectButton({ setCurProj }) {
   // };
 
   return (
-    <div id="addButton">
+    <div className="join-project">
         <TextField
             autoFocus
-            value={id}
-            onChange={handleDescriptionChange}
-            label="Name"
+            // value={id}
+            // onChange={handleDescriptionChange}
+            label="Project ID"
             type="text"
             variant="standard"
-            error={hasError}
-            helperText={hasError ? "Please enter name." : ""}
+            // error={hasError}
+            // helperText={hasError ? "Please enter name." : ""}
           />
       <Button variant="outlined" color="secondary" onClick={handleAddOpen}>
-        Join project
+        Join existing project
+      </Button>
+      <Typography variant="h6" className="message">
+        or
+      </Typography>
+      <TextField
+          autoFocus
+          value={id}
+          onChange={handleDescriptionChange}
+          label="Project ID"
+          type="text"
+          variant="standard"
+          error={hasError}
+          helperText={hasError ? "Please enter name." : ""}
+        />
+      <Button variant="outlined" color="success" onClick={handleAddOpen}>
+        create new project
       </Button>
     </div>
   );

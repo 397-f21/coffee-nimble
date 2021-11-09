@@ -135,7 +135,7 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
             autoFocus
             //value={newMember.name}
             onChange={handleMemberChange}
-            label="Name"
+            label="Member name"
             type="text"
             variant="standard"
             error={hasError}
@@ -144,9 +144,9 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
         </div>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={addMemberDb}>Add</Button>
-        <Button onClick={deleteMemberDb}>Delete Member</Button>
+        <Button color="success" onClick={addMemberDb}>Add</Button>
+        <Button color="error" onClick={deleteMemberDb}>Delete</Button>
+        <Button onClick={handleClose}>Done</Button>
       </DialogActions>
     </Dialog>
   );

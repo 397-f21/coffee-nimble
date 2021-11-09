@@ -17,10 +17,11 @@ export default function EditMembersButton({ members, tasks }) {
   return (
     <div id="EditMembersButton">
       <Button variant={unaddedmems ? "contained" : "outlined"}
-      color="secondary" 
+      color="primary" 
+      size="small"
       data-testid="add"
       onClick={handleAddOpen}>
-        Add members
+        edit team members
       </Button>
       <EditDialog open={open} members={members} tasks = {tasks} setOpen={setOpen}></EditDialog>
     </div>

@@ -8,18 +8,30 @@
 }
 
 .App-header {
-  padding: 1px;
+  padding-top: 18px;
+  padding-left: 15px;
   text-align: left;
   background: #bea0e5;
   color: white;
   font-size: 20px;
+  height: 60px;
 }
 
+.title {
+  text-align: center;
+}
+
+.message {
+  text-align: center;
+  width: 220px;
+}
 .App-team {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 35px;
+  gap: 10px;
 }
 
 .button-group {
@@ -38,11 +50,23 @@
   align-items: center;
 }
 
+#main-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.join-project {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
 .task-list {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding-bottom: 20px;
   gap: 10px;
 }
@@ -81,8 +105,18 @@ li {
   margin: 2px;
 }
 
+#curMembers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  gap: 5px;
+}
+
 #curMembers > li {
   width: 100px;
+  
 }
 
 .\31 {
