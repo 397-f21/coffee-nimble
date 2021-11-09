@@ -15,12 +15,13 @@ export default function AddProject({ setProjectId }) {
   //   handleClose();
   // };
 
+  //<AddProjectDialog open={open} setProjectId={setProjectId} setOpen={setOpen}></AddProjectDialog>
+
   return (
     <div id="addButton">
       <Button variant="outlined" color="secondary" onClick={handleAddOpen}>
         Add new project
       </Button>
-      <AddProjectDialog open={open} setProjectId={setProjectId} setOpen={setOpen}></AddProjectDialog>
     </div>
   );
 }

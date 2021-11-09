@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import EditMembersButton from "./components/EditMembersButton";
 import { useData } from "./Utilities/firebase.js";
 import { AppBar } from "@mui/material";
+import AddProject from "./components/AddProject";
+import JoinProjectButton from "./components/JoinProjectButton"
 
 function App() {
 
@@ -18,8 +20,8 @@ function App() {
     // const [tasksError, setDbTasksError] = useState(null)
     // const [membersError, setDbMembersError] = useState(null)
 
-    const [dbTasks, tasksLoading, tasksError] = useData("/projects/"+curProj+"/tasks")
-    const [dbMembers, membersLoading, membersError] = useData("/projects/"+curProj+"/members")
+    const [dbTasks, tasksLoading, tasksError] = useData("/tasks")
+    const [dbMembers, membersLoading, membersError] = useData("/members")
 
 
     const CurProjectHandler = (id) => {
@@ -49,7 +51,7 @@ function App() {
                 {curProj === -1 ?
                     <div>
                         <AddProject setCurProj={CurProjectHandler}/>
-                        <JoinProjectButton setCurProj={CurProjectHandler}/>
+                        <JoinProjectButton setCurProj={setCurProj}/>
                     </div>
                     :
                     <div>

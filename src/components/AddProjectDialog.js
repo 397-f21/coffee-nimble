@@ -15,9 +15,10 @@ const blank = () => {
 };
 
 
-export default function EditDialog({ open, id, setOpen }) {
+export default function EditDialog({ open, setProjId, setOpen }) {
   const [newProject, setNewProject] = useState(blank());
   const [hasError, setHasError] = useState(false);
+    const id = 1
 
   const validate = () => {
     if (!id) {
@@ -36,10 +37,9 @@ export default function EditDialog({ open, id, setOpen }) {
   };
 
   const handleProjectChange = (event) => {
-    const newProject = event.target.value;
     setNewProject((prevState) => ({
       ...prevState,
-      ["id"]: new project,
+      ["id"]: event.target.value,
     }));
   };
 
@@ -53,6 +53,7 @@ export default function EditDialog({ open, id, setOpen }) {
         console.log(newProject);
         alert(error);
       }
+      setProjId(id)
       handleClose();
     }
   };
