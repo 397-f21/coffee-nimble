@@ -8,7 +8,7 @@ import "../App.css";
 // import $ from "jquery";
 // window.$ = $;
 
-export default function TaskCard({ task, index, members }) {
+export default function TaskCard({ task, index }) {
   return (
     <div>
       <Card className="card" sx={{ width: 330 }}>

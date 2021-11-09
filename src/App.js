@@ -1,13 +1,12 @@
 import "./App.css";
 import AddButton from "./components/AddButton";
-import TaskCard from "./components/TaskCard";
 import AssignButton from "./components/assignButton";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import EditMembersButton from "./components/EditMembersButton";
 import { useData } from "./Utilities/firebase.js";
 import { AppBar } from "@mui/material";
-import AddProject from "./components/AddProject";
+import TaskList from "./components/TaskList";
 import JoinProjectButton from "./components/JoinProjectButton"
 
 function App() {
@@ -83,16 +82,8 @@ function App() {
                                 <Typography className="message" variant="h9">
                                     use the buttons above to add and assign new tasks！
                                 </Typography>
-                            ) : (
-                                dbTasks.map((task, index) => (
-                                    <TaskCard
-                                        task={task}
-                                        index={index}
-                                        members={dbMembers}
-                                        key={task.description}
-                                    />
-                                ))
-                            )}
+                            ) : <TaskList tasks={dbTasks}/>
+                            }
                         </div>
                     </div>
                 }
