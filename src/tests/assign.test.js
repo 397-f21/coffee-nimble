@@ -52,42 +52,35 @@ test('Initial assignement of tasks works correctly', () => {
         {
             "description": "create task component",
             "difficulty": 1,
-            "assignees": [
-            ],
+            "assignees": undefined,
             "priority": 5,
             "completed": false
         },
         {
             "description": "Assign tasks button",
             "difficulty": 2,
-            "assignees": [
-            ],
+            "assignees": undefined,
             "priority": 5,
             "completed": false
         },
         {
             "description": "task List",
             "difficulty": 3,
-            "assignees": [
-            ],
+            "assignees": undefined,
             "priority": 3,
             "completed": false
         },
         {
             "description": "login",
             "difficulty": 3,
-            "assignees": [
-      
-            ],
+            "assignees": undefined,
             "priority": 2,
             "completed": false
         },
         {
             "description": "mood tracking",
             "difficulty": 1,
-            "assignees": [
-      
-            ],
+            "assignees": undefined,
             "priority": 1,
             "completed": false
         },
@@ -118,70 +111,6 @@ test('Initial assignement of tasks works correctly', () => {
         {
             "name": "Yijing",
             "score": 0
-        }
-      ]
-      let updatedTasks = [
-        {
-            "description": "create task component",
-            "difficulty": 1,
-            "assignees": [{'name':'Jake','score':4}],
-            "priority": 5,
-            "completed": false
-        },
-        {
-            "description": "Assign tasks button",
-            "difficulty": 2,
-            "assignees": [{'name':'Misha','score':5},{'name':'Iris','score':5}],
-            "priority": 5,
-            "completed": false
-        },
-        {
-            "description": "task List",
-            "difficulty": 3,
-            "assignees": [{'name':'Daniel','score':3},{'name':'Carina','score':3},{'name':'Jake','score':4}],
-            "priority": 3,
-            "completed": false
-        },
-        {
-            "description": "login",
-            "difficulty": 3,
-            "assignees": [{'name':'Yijing','score':4},{'name':'Misha','score':5},{'name':'Iris','score':5}],
-            "priority": 2,
-            "completed": false
-        },
-        {
-            "description": "mood tracking",
-            "difficulty": 1,
-            "assignees": [{'name':'Yijing','score':4}],
-            "priority": 1,
-            "completed": false
-        },
-      ]
-      
-      let updatedMembers = [
-        {
-          "name": "Carina",
-          "score": 3
-        },
-        {
-          "name": "Daniel",
-          "score": 3
-        },
-        {
-          "name": "Jake",
-          "score": 4
-        },
-        {
-          "name": "Yijing",
-          "score": 4
-        },
-        {
-          "name": "Iris",
-          "score": 5
-        },
-        {
-          "name": "Misha",
-          "score": 5
         }
       ]
       let totalScoreSum = 0;
