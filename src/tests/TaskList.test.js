@@ -1,5 +1,6 @@
 import React from 'react';
 import { render} from '@testing-library/react';
+import TaskList from '../components/TaskList';
 
 it("Tasks array is rendered in order of priority when data is provided out-of-order", () => {
     const taskList = [
@@ -16,9 +17,10 @@ it("Tasks array is rendered in order of priority when data is provided out-of-or
             "completed": false
         }
         ];
-    const { container } = render(<TaskList tasks={tasks}/>);
+    const { container } = render(<TaskList tasks={taskList}/>);
     
     const firstTask = container.firstChild
-    expect(firstTask.firstChild.firstChild.firstChild.textContent).toBe('high priority task');
+    // console.log(firstTask);
+    expect(firstTask.lastChild.firstChild.firstChild.textContent).toBe('high priority taskPRIORITY1');
 });
     
