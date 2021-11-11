@@ -86,7 +86,9 @@ export default function AddDialog({ open, tasks, setOpen }) {
 
   return (
     <Dialog data-testid="dialogTestId" open={open} onClose={handleClose}>
-      <DialogTitle data-cy="addTaskTitle">Enter New Task Information</DialogTitle>
+      <DialogTitle data-cy="addTaskTitle">
+        Enter New Task Information
+      </DialogTitle>
       <DialogContent>
         <div id="newTaskForm">
           <TextField
@@ -99,12 +101,13 @@ export default function AddDialog({ open, tasks, setOpen }) {
             variant="standard"
             error={hasError}
             helperText={hasError ? "Please enter description." : ""}
+            data-cy="taskDescription"
           />
           <div id="selects">
             <FormControl fullWidth>
               <InputLabel>Complexity</InputLabel>
               <Select
-                 inputProps={{"data-testid":"difficulty" }}
+                inputProps={{ "data-testid": "difficulty" }}
                 value={newTask.difficulty}
                 label="Complexity"
                 onChange={handleDifficultyChange}
@@ -119,7 +122,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
               <InputLabel>Priority</InputLabel>
               <Select
                 value={newTask.priority}
-                inputProps={{"data-testid":"priority"  }}
+                inputProps={{ "data-testid": "priority" }}
                 label="Priority"
                 onChange={handlePriorityChange}
               >
@@ -136,7 +139,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button data-testid="addButton" onClick={addTaskDb}>
+        <Button data-testid="addButton" onClick={addTaskDb} data-cy="addButton">
           Add
         </Button>
       </DialogActions>

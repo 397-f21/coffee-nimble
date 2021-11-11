@@ -16,7 +16,13 @@ export default function AddButton({ tasks }) {
 
   return (
     <div id="addButton">
-      <Button data-cy="addTask" variant="outlined" color="secondary" onClick={handleAddOpen}>
+      <Button
+        data-cy="addTask"
+        variant="outlined"
+        color="secondary"
+        onClick={handleAddOpen}
+        data-cy="addNewTask"
+      >
         Add new task
       </Button>
       <AddDialog open={open} tasks={tasks} setOpen={setOpen}></AddDialog>

@@ -4,7 +4,6 @@ import AddProjectDialog from "./AddProjectDialog";
 import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
 
-
 export default function JoinProjectButton({ setCurProj }) {
   const [open, setOpen] = React.useState(false);
   const [id, setId] = useState("");
@@ -16,7 +15,7 @@ export default function JoinProjectButton({ setCurProj }) {
 
   const handleDescriptionChange = (event) => {
     const newDescription = event.target.value;
-    setId(newDescription)
+    setId(newDescription);
   };
 
   // const addTask = () => {
@@ -26,32 +25,37 @@ export default function JoinProjectButton({ setCurProj }) {
 
   return (
     <div className="join-project">
-        <TextField
-            autoFocus
-            // value={id}
-            // onChange={handleDescriptionChange}
-            label="Project ID"
-            type="text"
-            variant="standard"
-            // error={hasError}
-            // helperText={hasError ? "Please enter name." : ""}
-          />
-      <Button variant="outlined" color="secondary" onClick={handleAddOpen}>
+      <TextField
+        autoFocus
+        // value={id}
+        // onChange={handleDescriptionChange}
+        label="Project ID"
+        type="text"
+        variant="standard"
+        // error={hasError}
+        // helperText={hasError ? "Please enter name." : ""}
+      />
+      <Button
+        variant="outlined"
+        color="secondary"
+        onClick={handleAddOpen}
+        data-cy="existingProject"
+      >
         Join existing project
       </Button>
       <Typography variant="h6" className="message">
         or
       </Typography>
       <TextField
-          autoFocus
-          value={id}
-          onChange={handleDescriptionChange}
-          label="Project ID"
-          type="text"
-          variant="standard"
-          error={hasError}
-          helperText={hasError ? "Please enter name." : ""}
-        />
+        autoFocus
+        value={id}
+        onChange={handleDescriptionChange}
+        label="Project ID"
+        type="text"
+        variant="standard"
+        error={hasError}
+        helperText={hasError ? "Please enter name." : ""}
+      />
       <Button variant="outlined" color="success" onClick={handleAddOpen}>
         create new project
       </Button>
