@@ -12,31 +12,8 @@ import JoinProjectButton from "./components/JoinProjectButton"
 function App() {
 
     const [curProj, setCurProj] = useState(-1)
-    //const [dbTasks, setDbTasks] = useState(null)
-    //const [dbMembers, setDbMembers] = useState(null)
-    // const [tasksLoading, setDbTasksLoading] = useState(null)
-    // const [membersLoading, setDbMembersLoading] = useState(null)
-    // const [tasksError, setDbTasksError] = useState(null)
-    // const [membersError, setDbMembersError] = useState(null)
-
     const [dbTasks, tasksLoading, tasksError] = useData("/tasks")
     const [dbMembers, membersLoading, membersError] = useData("/members")
-
-
-    const CurProjectHandler = (id) => {
-        //const [dbTasksProj, tasksLoadingProj, tasksErrorProj] = useData("/projects/"+id+"/tasks")
-        //const [dbMembersProj, membersLoadingProj, membersErrorProj] = useData("/projects/"+id+"/members")
-        
-        //if (tasksError || membersError){
-        //    return
-        //}
-        //if (!tasksLoading ){
-        setCurProj(id)
-         //   setDbTasks(dbTasks)
-         //   setDbMembers(dbMembers)
-        //}
-
-    }
 
     return (
         <div className="App">
@@ -49,7 +26,6 @@ function App() {
             <div>
                 {curProj === -1 ?
                     <div>
-                        {/* <AddProject setCurProj={CurProjectHandler}/> */}
                         <JoinProjectButton setCurProj={setCurProj}/>
                     </div>
                     :
@@ -67,8 +43,13 @@ function App() {
                                 tasks={dbTasks}
                                 loading={tasksLoading}
                             />
-
                         </div>
+                        { membersLoading ?
+                            <div>Loading team members...</div>
+                            : membersError ?
+                            <div>{membersError}</div>
+                            : <div></div>
+                        }
                         <div className="task-list">
                             {tasksError ? (
                                 <Typography className="title" variant="h5">

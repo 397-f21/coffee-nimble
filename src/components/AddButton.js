@@ -21,7 +21,6 @@ export default function AddButton({ tasks }) {
         variant="outlined"
         color="secondary"
         onClick={handleAddOpen}
-        data-cy="addNewTask"
       >
         Add new task
       </Button>

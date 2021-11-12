@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import AddProjectDialog from "./AddProjectDialog";
 import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
 
 export default function JoinProjectButton({ setCurProj }) {
-  const [open, setOpen] = React.useState(false);
   const [id, setId] = useState("");
-  const [hasError, setHasError] = useState(false);
 
   const handleAddOpen = () => {
     setCurProj(0);
@@ -18,22 +15,13 @@ export default function JoinProjectButton({ setCurProj }) {
     setId(newDescription);
   };
 
-  // const addTask = () => {
-  //   setTasks((prevState) => [...prevState, newTask].sort((x, y) => x.priority - y.priority));
-  //   handleClose();
-  // };
-
   return (
     <div className="join-project">
       <TextField
         autoFocus
-        // value={id}
-        // onChange={handleDescriptionChange}
         label="Project ID"
         type="text"
         variant="standard"
-        // error={hasError}
-        // helperText={hasError ? "Please enter name." : ""}
       />
       <Button
         variant="outlined"
@@ -53,8 +41,6 @@ export default function JoinProjectButton({ setCurProj }) {
         label="Project ID"
         type="text"
         variant="standard"
-        error={hasError}
-        helperText={hasError ? "Please enter name." : ""}
       />
       <Button variant="outlined" color="success" onClick={handleAddOpen}>
         create new project

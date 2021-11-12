@@ -39,7 +39,7 @@ export default function EditDialog({ open, setProjId, setOpen }) {
   const handleProjectChange = (event) => {
     setNewProject((prevState) => ({
       ...prevState,
-      ["id"]: event.target.value,
+      id: event.target.value,
     }));
   };
 

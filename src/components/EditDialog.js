@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { setData, useData } from "../Utilities/firebase";
+import { setData } from "../Utilities/firebase";
 import $ from "jquery";
 window.$ = $;
 
@@ -41,8 +41,8 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
     const newMember = event.target.value;
     setNewMember((prevState) => ({
       ...prevState,
-      ["name"]: newMember,
-      ["id"]: members ? Array.from(members).length + 1 : 1,
+      name: newMember,
+      id: members ? Array.from(members).length + 1 : 1,
     }));
   };
 

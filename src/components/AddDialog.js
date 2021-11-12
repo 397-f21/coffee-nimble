@@ -46,7 +46,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
     const newDescription = event.target.value;
     setNewTask((prevState) => ({
       ...prevState,
-      ["description"]: newDescription,
+      description: newDescription,
     }));
   };
 
@@ -54,7 +54,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
     const newDifficulty = event.target.value;
     setNewTask((prevState) => ({
       ...prevState,
-      ["difficulty"]: newDifficulty,
+      difficulty: newDifficulty,
     }));
   };
 
@@ -62,7 +62,7 @@ export default function AddDialog({ open, tasks, setOpen }) {
     const newPriority = event.target.value;
     setNewTask((prevState) => ({
       ...prevState,
-      ["priority"]: newPriority,
+      priority: newPriority,
     }));
   };
 
