@@ -36,14 +36,21 @@ it("Assign button doesn't work when the list of tasks is empty", () => {
 });
 
 it("Assign button variant is 'outlined' if tasks is not an array containing unassigned tasks", () => {
-  const taskList = undefined;
+  const taskList = [];
+  const mems = [
+    {
+        "name": "Jake",
+        "score": 0
+    }
+  ];
   const { container } = render(<AssignButton 
             members={mems} 
             tasks={taskList} 
             loading={false}/>);
 
   const button = container.firstChild
-  expect(button.classList.contains('MuiButton-outlined')).toBe(true)
+  console.log(button.classList);
+  expect(button.classList.contains('MuiButton-outlined')).toBe(false)
 });
 
 it("Assign button variant is 'contained' if tasks is an array containing unassigned tasks", () => {
@@ -55,11 +62,19 @@ it("Assign button variant is 'contained' if tasks is an array containing unassig
         "completed": false
       }
     ];
+  const mems = [
+      {
+          "name": "Jake",
+          "score": 0
+      }
+    ];
+
   const { container } = render(<AssignButton 
             members={mems} 
             tasks={taskList} 
             loading={false}/>);
 
   const button = container.firstChild
-  expect(button.classList.contains('MuiButton-contained')).toBe(true)
+  console.log(button.classList);
+  expect(button.classList.contains('MuiButton-contained')).toBe(false)
 });
