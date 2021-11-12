@@ -28,11 +28,12 @@ export default function AssignButton({ members, tasks, loading }) {
   // returns true if there are tasks in the array that are unassigned.
   const unassignedTasks =
     !loading && tasks !== null && tasks.some(isUnassigned);
-
+  const nonemptyTeam = members !== undefined && members != null
+  
   return (
     <div id="assignButton">
       <Button
-        variant={unassignedTasks ? "contained" : "outlined"}
+        variant={unassignedTasks && nonemptyTeam ? "contained" : "outlined"}
         color="secondary"
         onClick={() => handleClickDb()}
       >
