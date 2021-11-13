@@ -15,7 +15,7 @@ export default function EditMembersButton({ members, tasks }) {
      members !== null && isUnadded(members);
 
   return (
-    <div id="EditMembersButton">
+    <div id="EditMembersButton" data-cy="addnewmember">
       <Button variant={unaddedmems ? "contained" : "outlined"}
       color="primary" 
       size="small"

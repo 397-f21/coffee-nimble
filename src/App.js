@@ -30,7 +30,7 @@ function App() {
                     </div>
                     :
                     <div id="main-body">
-                        <div className="App-team">
+                        <div className="App-team" data-cy="teamname">
                             <Typography className="title" variant="h5">
                                 welcome, team coffee!
                             </Typography>

@@ -118,7 +118,7 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
     <Dialog data-testid="dialogTestId" open={open} onClose={handleClose}>
       <DialogTitle>Edit Members</DialogTitle>
       <DialogContent>
-        <div id="curMembers">
+        <div id="curMembers" data-cy="result">
           {members ? (
             members.map((listitem) => (
               <li key={listitem.name} className={listitem.id}>
@@ -129,7 +129,7 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
             <div></div>
           )}
         </div>
-        <div id="newTaskForm">
+        <div id="newTaskForm" data-cy="addname">
           <TextField
             id="nameField"
             autoFocus
@@ -144,7 +144,9 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
         </div>
       </DialogContent>
       <DialogActions>
-        <Button color="success" onClick={addMemberDb}>Add</Button>
+        <div id="addButton" data-cy="confirm">
+          <Button color="success" onClick={addMemberDb}>Add</Button>
+        </div>
         <Button color="error" onClick={deleteMemberDb}>Delete</Button>
         <Button onClick={handleClose}>Done</Button>
       </DialogActions>

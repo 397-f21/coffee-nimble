@@ -16,21 +16,22 @@ export default function JoinProjectButton({ setCurProj }) {
   };
 
   return (
-    <div className="join-project">
+    <div className="join-project" >
       <TextField
         autoFocus
         label="Project ID"
         type="text"
         variant="standard"
       />
-      <Button
-        variant="outlined"
-        color="secondary"
-        onClick={handleAddOpen}
-        data-cy="existingProject"
-      >
-        Join existing project
-      </Button>
+      <div className="join-existing" data-cy="joinButton">
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={handleAddOpen}
+        >
+          Join existing project
+        </Button>
+      </div>
       <Typography variant="h6" className="message">
         or
       </Typography>

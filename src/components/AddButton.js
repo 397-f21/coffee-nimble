@@ -15,9 +15,8 @@ export default function AddButton({ tasks }) {
   // };
 
   return (
-    <div id="addButton">
+    <div id="addButton" data-cy="addTask">
       <Button
-        data-cy="addTask"
         variant="outlined"
         color="secondary"
         onClick={handleAddOpen}
