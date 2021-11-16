@@ -19,7 +19,7 @@ describe("Create a new task with description", () => {
     cy.get("[data-cy=addTask]").click();
     cy.get('.MuiInput-root > [data-testid=description]').type('Cypress test for Misha');
     cy.get("[data-cy=addButton]").click();
-    cy.get(':nth-child(2) > .MuiPaper-root > .MuiCardContent-root > [data-cy=cardDescription]').should(
+    cy.get(':nth-child(3) > .MuiPaper-root > .MuiCardContent-root > [data-cy=cardDescription]').should(
       "have.text",
       "Cypress test for Misha"
     );

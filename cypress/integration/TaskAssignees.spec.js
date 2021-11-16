@@ -20,9 +20,11 @@ describe("Deleting member form members list takes their name off the taskcard", 
     cy.get("[data-cy=joinButton]").click();
     cy.get("[data-cy=addnewmember]").click();
     cy.get('[data-cy=addname]').type('apple');
+    cy.get("[data-cy=deleteMemberButton]").click();
+    cy.get('[data-cy=addname]').type('pearl');
     cy.get("[data-cy=deleteMemberButton]").click()
     cy.get('[data-cy=doneEditingButton').click();
     cy.get(".member1").should('not.exist');
-    cy.get(".member2").should('have.text','pearl');
+    cy.get(".member2").should('not.exist');
   });
 });
