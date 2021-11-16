@@ -12,10 +12,11 @@ describe ('Test creat new project', () => {
       cy.visit ('/');
       cy.get('[data-cy=joinButton]').click();
       cy.get('[data-cy=addnewmember]').click();
-      cy.get('[data-cy=addname]').type('apple');
+      cy.get('[data-cy=addname]').type('user1');
       cy.get('[data-cy=confirm]').click();
-
-      cy.get('[data-cy=result]').should('contain', 'apple');
+      cy.get('[data-cy=result]').should('contain', 'user1');
+      cy.get('[data-cy=addname]').type('user1');
+      cy.get("[data-cy=deleteMemberButton]").click();
   
     });
 
