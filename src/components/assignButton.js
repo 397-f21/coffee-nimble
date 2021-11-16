@@ -31,7 +31,7 @@ export default function AssignButton({ members, tasks, loading }) {
   const nonemptyTeam = members !== undefined && members != null
   
   return (
-    <div id="assignButton">
+    <div id="assignButton" data-cy='assignButton'>
       <Button
         variant={unassignedTasks && nonemptyTeam ? "contained" : "outlined"}
         color="secondary"

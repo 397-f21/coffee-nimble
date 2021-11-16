@@ -36,13 +36,21 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
     setNewMember(blankForm());
     setHasError(false);
   };
+  const getNextNum = (members) => {
+    let lastMember = members.slice(-1)[0];
+    console.log(lastMember['id']);
+    let lastIdx = lastMember['id'];
+    return parseInt(lastIdx.slice(6))
 
+
+
+  };
   const handleMemberChange = (event) => {
     const newMember = event.target.value;
     setNewMember((prevState) => ({
       ...prevState,
       name: newMember,
-      id: members ? Array.from(members).length + 1 : 1,
+      id: members ? `member${getNextNum(Array.from(members)) + 1}` : `member${1}`,
     }));
   };
 
@@ -147,8 +155,12 @@ export default function EditDialog({ open, members, tasks, setOpen }) {
         <div id="addButton" data-cy="confirm">
           <Button color="success" onClick={addMemberDb}>Add</Button>
         </div>
-        <Button color="error" onClick={deleteMemberDb}>Delete</Button>
-        <Button onClick={handleClose}>Done</Button>
+        <div id='deleteButon' data-cy='deleteMemberButton'>
+          <Button color="error" onClick={deleteMemberDb}>Delete</Button>
+        </div>
+        <div id='doneButton' data-cy='doneEditingButton'>
+          <Button onClick={handleClose}>Done</Button>
+        </div>
       </DialogActions>
     </Dialog>
   );

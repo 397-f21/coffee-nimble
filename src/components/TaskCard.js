@@ -17,6 +17,7 @@ export default function TaskCard({ task, index }) {
             data-testid="description"
             className="cardDescription"
             variant="h6"
+            data-cy='cardDescription'
           >
             {task.description}
           </Typography>

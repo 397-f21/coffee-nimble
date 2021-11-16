@@ -90,10 +90,10 @@ export default function AddDialog({ open, tasks, setOpen }) {
         Enter New Task Information
       </DialogTitle>
       <DialogContent>
-        <div id="newTaskForm">
+        <div id="newTaskForm" data-cy='taskDescription'>
           <TextField
             autoFocus
-            inputProps={{ "data-testid": "description" }}
+            inputProps={{ "data-testid": "description"}}
             value={newTask.description}
             onChange={handleDescriptionChange}
             label="Short description of task"
